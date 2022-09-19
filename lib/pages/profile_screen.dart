@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyBookingScreen extends StatelessWidget {
-  const MyBookingScreen({Key? key}) : super(key: key);
+class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +9,8 @@ class MyBookingScreen extends StatelessWidget {
       color:  Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(child: Text('MyBookings',style: TextStyle(fontSize: 24)),)
+        children: const [
+          Center(child: Text('ProfileScreen',style: TextStyle(fontSize: 24)),)
         ],
       ),
     );

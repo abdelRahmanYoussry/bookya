@@ -14,17 +14,16 @@ class MyTextFormField extends StatelessWidget {
    String? label;
    String? hint;
    Widget? prefix;
+  Color ?borderColor ;
+  Color? labelColor;
+  Color? textColor ;
+  Color ?backgroundColor;
+  Color ?prefixIconColor ;
+  Color ?suffixIconColor ;
   IconData? suffix;
   Function()? suffixClicked;
-  TextStyle? hintStyle=const TextStyle(
-    color: Colors.grey,fontSize: 12,
-  );
-  Color borderColor = Colors.limeAccent;
-  Color labelColor = Colors.white;
-  Color textColor = Colors.white;
-  Color backgroundColor = Colors.blueGrey;
-  Color ?prefixIconColor = Colors.limeAccent;
-  Color ?suffixIconColor = Colors.limeAccent;
+  TextStyle? hintStyle;
+
   String? textInputFormat;
 
   MyTextFormField({Key? key,required this.readOnly, required this.control,
@@ -57,13 +56,14 @@ class MyTextFormField extends StatelessWidget {
       style: TextStyle(color: textColor, fontSize: 16),
       decoration: InputDecoration(
         errorStyle: const TextStyle(fontSize: 12, color: Colors.red),
-        fillColor: backgroundColor.withOpacity(0.5),
+        fillColor: backgroundColor!,
         filled: true,
         labelText: label,
         hintText:hint ,
         labelStyle: TextStyle(color: labelColor, fontSize: 14),
         hintStyle: hintStyle,
         prefixIcon: prefix,
+        prefixIconColor:prefixIconColor ,
         suffixIcon: suffix != null
             ? IconButton(
                 onPressed: () {
@@ -73,11 +73,11 @@ class MyTextFormField extends StatelessWidget {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).backgroundColor, width: 3),
-            borderRadius: BorderRadius.circular(10)),
+            borderSide: BorderSide(color: Theme.of(context).textTheme.subtitle1!.color!, width: 3),
+            borderRadius: BorderRadius.circular(20)),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color:Theme.of(context).textTheme.subtitle1!.color!, width: 3),
-            borderRadius: BorderRadius.circular(10)),
+            borderSide: BorderSide(color:borderColor!, width: 3),
+            borderRadius: BorderRadius.circular(20)),
         focusedErrorBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.red, width: 4),
             borderRadius: BorderRadius.circular(10)),
