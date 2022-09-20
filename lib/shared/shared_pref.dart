@@ -16,11 +16,11 @@ class SharedPref {
     await _sharedPreferences!.setString(emailKey, email);
   }
 
-  static String getEmail() {
-    return _sharedPreferences!.getString(emailKey)!;
+  static String? getEmail() {
+    return _sharedPreferences!.getString(emailKey);
   }
 
-  static String getToken() {
-    return _sharedPreferences!.getString(tokenKey)!;
+  static String? getToken() {
+    return _sharedPreferences!.getString(tokenKey);
   }
 }

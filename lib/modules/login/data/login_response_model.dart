@@ -1,22 +1,21 @@
-class RegisterResponseModel {
+class LoginResponseModel {
   Data? data;
 
-  RegisterResponseModel({ this.data});
+  LoginResponseModel({ this.data});
 
-
-  RegisterResponseModel.fromJsonForData(Map<String, dynamic> json) {
-    data = json['data'] != null ?  Data.fromJson(json['data']) : null;
+  LoginResponseModel.fromJson(Map<String, dynamic> json) {
+   data = json['data'] != null ?  Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
+    final Map<String, dynamic> data =  {};
+
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
     return data;
   }
 }
-
 
 class Data {
   int? id;
@@ -31,9 +30,9 @@ class Data {
         this.name,
         this.email,
         this.apiToken,
-
         this.createdAt,
-        this.updatedAt,});
+        this.updatedAt,
+      });
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -45,7 +44,7 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
+    final Map<String, dynamic> data =  {};
     data['id'] = id;
     data['name'] = name;
     data['email'] = email;

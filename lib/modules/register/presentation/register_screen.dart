@@ -7,6 +7,7 @@ import 'package:bookya/shared/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:rxdart/subjects.dart';
 
 class RegisterPage extends StatefulWidget {
    const RegisterPage({Key? key}) : super(key: key);
@@ -17,12 +18,31 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   RegisterBloc registerBloc = RegisterBloc();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  BehaviorSubject<Map<Icon,bool>> rxPassword = BehaviorSubject();
+  BehaviorSubject<Map<Icon,bool>> rxConfirmPassword = BehaviorSubject();
   var formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    _nameController.clear();
+    _passwordController.clear();
+    _emailController.clear();
+    _confirmPasswordController.clear();
+    rxPassword.close();
+    rxConfirmPassword.close();
+    super.dispose();
+  }
+  @override
+  void initState() {
+    Icon visibilityOff =  Icon(Icons.visibility_off_outlined,color: mainColor);
+    rxPassword.sink.add({visibilityOff: true});
+    rxConfirmPassword.sink.add({visibilityOff: true});
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -115,6 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 Expanded(child: CustomTextFormField(_nameController, hint: "Name", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
                                     onValidator:(String? value){
                                       if(value!.length < 3) return "enter valid name";
+                                      return null;
                                     }
                                 ),),
                                 Expanded(child: CustomTextFormField(_emailController,hint: "Email", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
@@ -125,19 +146,56 @@ class _RegisterPageState extends State<RegisterPage> {
                                             .hasMatch(value!)){
                                           return "Enter valid email";
                                         }
+                                        return null;
                                       }                                })),
-                                Expanded(child: CustomTextFormField(_passwordController,hint: "Password", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
-                                    onValidator:(String? value){
-                                      if(value!.length < 6) return "Enter valid password";
-                                    })),
-                                Expanded(child: CustomTextFormField(_confirmPasswordController,hint: "Confirm Password", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
-                                    onValidator:(String? value){
-                                      if(value!.length < 6) {
-                                        return "Enter valid password";
-                                      }else if ( value != _passwordController.text) {
-                                        return "Confirm password does not match";
-                                      }
-                                    })),
+                                Expanded(child: StreamBuilder<Map<Icon,bool>>(
+                                  stream: rxPassword.stream,
+                                  builder: (context, snapshot) {
+                                    return CustomTextFormField(_passwordController,hint: "Password",
+                                        hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
+                                        obscureText: snapshot.data == null ? false : snapshot.data!.values.first,
+                                        suffexIcon: snapshot.data == null ?
+                                        const Icon(Icons.abc)
+                                            :
+                                        snapshot.data!.keys.first, onIconPress: (){
+                                      if(snapshot.data!.values.first == false){
+                                          rxPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: mainColor):true});
+                                      }else {
+                                        rxPassword.sink.add({  Icon(Icons.visibility,color: mainColor):false});
+                                        }
+                                      },
+                                        onValidator:(String? value){
+                                          if(value!.length < 6) return "Enter valid password";
+                                          return null;
+
+                                        });
+                                  }
+                                )),
+                                Expanded(child: StreamBuilder<Map<Icon,bool>>(
+                                  stream: rxConfirmPassword.stream,
+                                  builder: (context, snapshot) {
+                                    return CustomTextFormField(_confirmPasswordController,hint: "Confirm Password", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
+                                        obscureText: snapshot.data == null ? false : snapshot.data!.values.first,
+                                        suffexIcon: snapshot.data == null ?
+                                        const Icon(Icons.abc)
+                                            :
+                                        snapshot.data!.keys.first,onIconPress: (){
+                                          if(snapshot.data!.values.first == false){
+                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: mainColor,):true});
+                                          }else {
+                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility,color: mainColor,):false});
+                                          }
+                                        },
+                                        onValidator:(String? value){
+                                          if(value!.length < 6) {
+                                            return "Enter valid password";
+                                          }else if ( value != _passwordController.text) {
+                                            return "Confirm password does not match";
+                                          }
+                                          return null;
+                                        });
+                                  }
+                                )),
 
                               ],
                             ),

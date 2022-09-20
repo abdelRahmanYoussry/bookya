@@ -4,6 +4,7 @@ import 'package:bookya/shared/shared_pref.dart';
 import 'package:bookya/shared/widgets/text_button.dart';
 import 'package:bookya/shared/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:rxdart/subjects.dart';
 
 class LoginPage extends StatefulWidget {
    const LoginPage({Key? key}) : super(key: key);
@@ -14,12 +15,24 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
 
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  BehaviorSubject<Map<Icon,bool>> rxPassword = BehaviorSubject();
+  @override
+  void dispose() {
+   _emailController.clear();
+   _passwordController.clear();
+   rxPassword.close();
+    super.dispose();
+  }
   @override
   void initState() {
     // TODO: implement initState
-    _emailController.text = SharedPref.getEmail() ;
+    Icon visibilityOff =  Icon(Icons.visibility_off_outlined,color: mainColor);
+    rxPassword.sink.add({visibilityOff: true});
+
+    _emailController.text = SharedPref.getEmail() ?? "" ;
+
     super.initState();
   }
   @override
@@ -84,7 +97,27 @@ class _LoginPageState extends State<LoginPage> {
                           children: [
                             const SizedBox(height: 16,),
                             Expanded(child: CustomTextFormField(_emailController,hint: "Email", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16))),
-                            Expanded(child: CustomTextFormField(_passwordController,hint: "Password", hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16))),
+                            Expanded(child:
+                            StreamBuilder<Map<Icon,bool>>(
+                              stream: rxPassword.stream,
+                              builder: (context, snapshot) {
+                                return CustomTextFormField(_passwordController,hint: "Password",
+                                    hintStyle:  TextStyle(color: Colors.grey.shade500 , fontSize: 16),
+                                  obscureText: snapshot.data == null ? false : snapshot.data!.values.first,
+                                  suffexIcon: snapshot.data == null ?
+                                  const Icon(Icons.abc)
+                                      :
+                                  snapshot.data!.keys.first,
+                                  onIconPress: (){
+                                    if(snapshot.data!.values.first == false){
+                                      rxPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: mainColor,):true});
+                                    }else {
+                                      rxPassword.sink.add({  Icon(Icons.visibility,color: mainColor,):false});
+                                    }
+                                  },
+                                );
+                              }
+                            )),
 
                           ],
                         ),
