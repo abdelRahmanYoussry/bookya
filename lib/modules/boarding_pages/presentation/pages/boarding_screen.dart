@@ -1,3 +1,4 @@
+import 'package:bookya/modules/boarding_pages/presentation/widgets/first_widget.dart';
 import 'package:flutter/material.dart';
 
 class BoardingScreen extends StatelessWidget {
@@ -5,6 +6,8 @@ class BoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const Scaffold(
+          body: FirstWidget(),
+    );
   }
 }
