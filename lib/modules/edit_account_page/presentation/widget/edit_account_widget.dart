@@ -16,12 +16,10 @@ class EditAccountWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               'Edit profile',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 26,
+              style: Theme.of(context).textTheme.headline5!.copyWith(
+                fontSize: 28,
               ),
             ),
             const SizedBox(

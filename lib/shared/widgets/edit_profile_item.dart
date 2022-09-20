@@ -20,11 +20,7 @@ class EditProfileItem extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(
-            color: Colors.grey[700],
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).textTheme.subtitle1,
         ),
         const Spacer(),
         Container(
