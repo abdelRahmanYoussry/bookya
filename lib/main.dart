@@ -1,15 +1,13 @@
-import 'package:bookya/modules/explore_screen/page/explore_screen_home.dart';
-import 'package:bookya/modules/settings_option_page/cubit/cubit.dart';
-import 'package:bookya/modules/settings_page/presentation/page/settings_home.dart';
-import 'package:bookya/shared/network/local/cache_helper.dart';
-import 'package:bookya/shared/styles/themes.dart';
+import 'package:bookya/settings/modules/explore_screen/page/explore_screen_home.dart';
+import 'package:bookya/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/settings/shared/cubit/dark_mode_states.dart';
+import 'package:bookya/settings/shared/network/local/cache_helper.dart';
+import 'package:bookya/settings/shared/styles/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 
-import 'shared/cubit/dark_mode_cubit.dart';
-import 'shared/cubit/dark_mode_states.dart';
+import 'settings/modules/settings_option_page/cubit/cubit.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
