@@ -1,3 +1,5 @@
+import 'package:bookya/modules/home/presentation/Pages/Tabs_screen.dart';
+import 'package:bookya/modules/home/presentation/Pages/home_screen.dart';
 import 'package:bookya/modules/register/presentation/register_screen.dart';
 import 'package:bookya/shared/colors.dart';
 import 'package:bookya/shared/shared_pref.dart';
@@ -124,6 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .04,),
                       CustomTextButton(context, "Login", onTap: (){
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  const AllTabsScreen()));
                       }
                       ),
                       SizedBox(height: MediaQuery.of(context).size.height * .06,),
