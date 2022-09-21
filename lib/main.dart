@@ -1,3 +1,4 @@
+import 'package:bookya/modules/boarding_pages/presentation/pages/boarding_screen.dart';
 import 'package:bookya/modules/login/presentation/login_screen.dart';
 import 'package:bookya/shared/shared_pref.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home: const BoardingScreen(),
     );
   }
 }

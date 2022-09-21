@@ -54,6 +54,8 @@ dev_dependencies:
   flutter_bloc:
   dio: ^4.0.6
   flutter_rating_bar: ^4.0.1
+  dots_indicator: ^2.1.0
+  search_page: ^2.0.0+1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -65,6 +67,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+
+  assets:
+    - assets/back.jpg
+    - assets/icon.png
+    - assets/part1.png
+    - assets/part2.png
+    - assets/part3.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
