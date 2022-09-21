@@ -39,7 +39,7 @@ List testing = [
       "email": "abdullah.mansour111@gmail.com",
       "email_verified_at": "null",
       "api_token":
-          "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u",
+      "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u",
       "image": "39561663606971.jpg",
       "created_at": "2022-09-13T05:48:17.000000Z",
       "updated_at": "2022-09-20T10:39:11.000000Z",
@@ -98,7 +98,7 @@ List testing = [
       "email": "abdullah.mansour111@gmail.com",
       "email_verified_at": "null",
       "api_token":
-          "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u",
+      "DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u",
       "image": "39561663606971.jpg",
       "created_at": "2022-09-13T05:48:17.000000Z",
       "updated_at": "2022-09-20T10:39:11.000000Z",
@@ -154,7 +154,7 @@ class TabScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             elevation: 1.0,
@@ -167,7 +167,7 @@ class TabScreen extends StatelessWidget {
               unselectedLabelColor: Color.fromRGBO(200, 200, 200, 1.0),
               tabs: [
                 Tab(
-                  text: 'OnGoing',
+                  text: 'Upcoming',
                 ),
                 Tab(
                   text: 'Completed',
