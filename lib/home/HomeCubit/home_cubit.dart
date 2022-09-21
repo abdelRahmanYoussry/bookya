@@ -6,6 +6,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   static HomeCubit get(context)=>BlocProvider.of(context);
   int currentIndex = 0;
+  int indicatorIndex = 0;
 
   void changeNavBar(int index)
   {
@@ -21,4 +22,10 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
+
+  void changeIndicatorIndex(int index,dynamic reson)
+  {
+    indicatorIndex = index;
+   emit(ChangeIndicator());
+  }
 }
