@@ -4,6 +4,7 @@ import 'package:bookya/modules/bookingStatus/presentation/pages/main_tab_screen.
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/home/HomeCubit/home_state.dart';
 import 'package:bookya/modules/home/presentation/Pages/home_screen.dart';
+import 'package:bookya/modules/settings/modules/settings_page/presentation/page/settings_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,8 +40,7 @@ class AllTabsScreen extends StatelessWidget {
     List<Widget> tapsScreens = const [
       HomeScreen(),
       TabScreen(),
-      FirstWidget(),
-
+      SettingsHome(),
     ];
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},

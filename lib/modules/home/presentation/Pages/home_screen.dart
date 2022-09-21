@@ -2,6 +2,7 @@
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/home/HomeCubit/home_state.dart';
 import 'package:bookya/modules/home/presentation/widgets/TextFormField.dart';
+import 'package:bookya/modules/settings/modules/explore_screen/page/explore_screen_home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -102,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                         Container(
                           decoration: BoxDecoration(
                               color: Colors.transparent.withOpacity(0.1),
-                              borderRadius: BorderRadius.horizontal(
+                              borderRadius: const BorderRadius.horizontal(
                                 left: Radius.circular(20),
                                 right: Radius.circular(20),
 
@@ -183,7 +184,7 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: double.infinity,
                           height: 20,
                         ),
@@ -286,10 +287,13 @@ Widget carouselSliderViewBuilder( context){
                     const SizedBox(height: 10,),
                     Row(children: [
                       InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ExploreHomeScreen(),),);
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                               color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.horizontal(
+                              borderRadius: const BorderRadius.horizontal(
                                 left: Radius.circular(20),
                                 right: Radius.circular(20),
 
