@@ -1,11 +1,12 @@
 import 'package:bookya/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/home/HomeCubit/home_state.dart';
-import 'package:bookya/pages/home_screen.dart';
-import 'package:bookya/pages/mybooking_screen.dart';
-import 'package:bookya/pages/profile_screen.dart';
+import 'package:bookya/home/presentation/Pages/home_screen.dart';
+import 'package:bookya/home/presentation/Pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'mybooking_screen.dart';
 
 
 class AllTabsScreen extends StatelessWidget {

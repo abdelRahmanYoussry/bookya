@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:bookya/home/HomeCubit/home_cubit.dart';
-import 'package:bookya/pages/Tabs_screen.dart';
-import 'package:bookya/pages/home_screen.dart';
+import 'package:bookya/home/presentation/Pages/Tabs_screen.dart';
+import 'package:bookya/home/presentation/Pages/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'cubits/Observastion/BlocObserver.dart';
+import 'home/HomeCubit/BlocObserver.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();

@@ -9,7 +9,7 @@ class MyBookingScreen extends StatelessWidget {
       color:  Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
+        children: const [
           Center(child: Text('MyBookings',style: TextStyle(fontSize: 24)),)
         ],
       ),
