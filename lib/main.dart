@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.teal,
           backgroundColor: Colors.white,
+
         ),
         home: const BoardingScreen(),
       ),

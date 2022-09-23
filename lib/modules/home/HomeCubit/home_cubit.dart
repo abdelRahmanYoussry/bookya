@@ -1,4 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
+import 'package:bookya/modules/home/Data/HomeEndPoints.dart';
+import 'package:bookya/modules/home/Data/HomeModels/HomeModel.dart';
+import 'package:bookya/shared/network/dio_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_state.dart';
 
@@ -7,6 +11,7 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context)=>BlocProvider.of(context);
   int currentIndex = 0;
   int indicatorIndex = 0;
+  HomeModel ?homeModel;
 
   void changeNavBar(int index)
   {
@@ -27,5 +32,17 @@ class HomeCubit extends Cubit<HomeState> {
   {
     indicatorIndex = index;
     emit(ChangeIndicator());
+  }
+
+
+  void getHotels(){
+    emit(LoadingGetHotel());
+    FinalDioHelper.getData(url: hotelUrl, query: {
+      'count':10,'page':1
+    }).then((value) {
+      homeModel=value.data;
+    }).catchError((error){
+      emit(ErrorGetHotel(error: error));
+    });
   }
 }

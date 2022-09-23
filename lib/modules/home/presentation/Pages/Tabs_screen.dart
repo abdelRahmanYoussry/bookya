@@ -46,15 +46,15 @@ class AllTabsScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-
+          extendBody: true,
             body: tapsScreens[cubit.currentIndex],
             bottomNavigationBar: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Container(
                     height: MediaQuery.of(context).size.height * 0.0800,
                     decoration:  BoxDecoration(
-                      color:Theme.of(context).backgroundColor,
-                      borderRadius:  const BorderRadius.all(Radius.circular(20)),
+                      color: Theme.of(context).backgroundColor,
+                      borderRadius:  const BorderRadius.all(Radius.circular(25)),
                       boxShadow: const [
                         BoxShadow(
                             color: Colors.white,

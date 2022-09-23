@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import '../endpoints.dart';
 
-class DioHelper {
+class FinalDioHelper {
   static late Dio dio;
   static init() {
     dio = Dio(
@@ -14,8 +14,7 @@ class DioHelper {
 
   static Future<Response> getData({
     required String url,
-    String token =
-        'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
+    String token = 'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
     required Map<String, dynamic> query,
   }) async {
     dio.options = BaseOptions(headers: {
