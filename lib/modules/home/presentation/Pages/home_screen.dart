@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: Colors.grey.withOpacity(0.1),
+          backgroundColor: Colors.grey.withOpacity(0.2),
           body: CustomScrollView(
             physics: const BouncingScrollPhysics(),
             controller: myScrollCon1,
@@ -98,8 +98,6 @@ class HomeScreen extends StatelessWidget {
                 toolbarHeight: mediaQuery.height / 6,
                 title:  MyTextFormField(
                     onTap: () {
-
-
                       showSearch(
                           context: context,
                           delegate: SearchPage<StorageItem>(
