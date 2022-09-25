@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import '../endpoints.dart';
 
 class FinalDioHelper {
-  static late Dio dio;
+  static  Dio? dio;
   static init() {
     dio = Dio(
       BaseOptions(
@@ -12,26 +12,31 @@ class FinalDioHelper {
     );
   }
 
-  static Future<Response> getData({
+  static Future<Response?> getData({
     required String url,
     String token = 'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
-    required Map<String, dynamic> query,
+      Map<String, dynamic> ?query,
   }) async {
-    dio.options = BaseOptions(headers: {
-      'token': token,
+    dio?.options = BaseOptions(headers: {
+      'token':token,
+      // 'Host':'<calculated when request is sent>',
+      // 'User-Agent':'PostmanRuntime/7.29.2',
+      // 'Accept':'*/*',
+      // 'Accept-Encoding':'gzip, deflate, br',
+      // 'Connection': 'keep-alive',
     });
-    return await dio.get(url, queryParameters: query);
+    return await dio?.get(url, queryParameters: query);
   }
 
-  static Future<Response> postData({
+  static Future<Future<Response>?> postData({
     String token =
         'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
     required String url,
     required Map<String, dynamic> data,
   }) async {
-    dio.options.headers = {
+    dio!.options.headers = {
       'token': token,
     };
-    return dio.post(url, data: data);
+    return dio!.post(url, data: data);
   }
 }

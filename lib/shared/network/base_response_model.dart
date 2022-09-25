@@ -4,8 +4,7 @@ class BaseResponseModel {
   BaseResponseModel({this.status});
 
   BaseResponseModel.fromJson(Map<String, dynamic> json) {
-    status =
-    json['status'] != null ? new Status.fromJson(json['status']) : null;
+    status =  Status.fromJson(json['status']) ;
   }
 
   Map<String, dynamic> toJson() {

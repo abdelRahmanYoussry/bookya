@@ -2,6 +2,18 @@ import 'HotelFacilities.dart';
 import 'HotelImages.dart';
 
 class DataInData {
+  /*
+    "id": 9,
+        "name": "hotel2",
+        "description": "desc4",
+        "price": "200",
+        "address": "tanta",
+        "longitude": "100",
+        "latitude": "200",
+        "rate": "10.50",
+        "created_at": "2022-09-11T13:44:00.000000Z",
+        "updated_at": "2022-09-11T13:44:00.000000Z",
+   */
   int? id;
   String? name;
   String? description;

@@ -1,37 +1,31 @@
 
-import '../../../../shared/network/base_response_model.dart';
-import '../../../login/data/login_response_model.dart';
 import 'HomeData.dart';
+import 'StatusModel.dart';
 
 class HomeModel {
-  Status? status;
-  HomeData? data;
+  final HomeStatus? status;
+  final HomeData? data;
 
-  HomeModel({this.status, this.data});
+  HomeModel({required this.status,
+    required this.data
+  });
 
-  HomeModel.fromJson(Map<String, dynamic> json) {
-    status =
-    json['status'] != null ? Status.fromJson(json['status']) : null;
-    data = json['data'] != null ? HomeData.fromJson(json['data']) : null;
+  factory HomeModel.fromJson(Map<String, dynamic> json) {
+    return HomeModel(
+        status: HomeStatus.fromJson(json['status']),
+        data: HomeData.fromJson(json['data'])
+    );
+
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
-    if (status != null) {
-      data['status'] = status!.toJson();
-    }
-    if (this.data != null) {
-      data['data'] = this.data!.toJson();
-    }
-    return data;
-  }
+  // Map<String, dynamic> toJson() {
+  //   final Map<String, dynamic> data = Map<String, dynamic>();
+  //   if (status != null) {
+  //     data['status'] = status.toJson();
+  //   }
+  //   if (this.data != null) {
+  //     data['data'] = this.data.toJson();
+  //   }
+  //   return data;
+  // }
 }
-
-
-
-
-
-
-
-
-
