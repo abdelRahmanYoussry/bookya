@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bookya/modules/boarding_pages/presentation/pages/boarding_screen.dart';
+import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
 import 'package:bookya/modules/home/HomeCubit/BlocObserver.dart';
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/register/domain/register_bloc.dart';
@@ -16,6 +17,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPref.initialize();
   Bloc.observer = MyBlocObserver();
+  FinalDioHelper.init();
 
   // late bool isDark = CacheHelper.getData(key: 'isDark');
 
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create:(context)=>HomeCubit()),
+        BlocProvider(create:(context)=>HomeCubit()..getHotels()),
         BlocProvider(create: (context)=> RegisterBloc()),
         BlocProvider(create: (context) => SettingsBloc()),
         BlocProvider(create: (context) => DarkModeBloc()),

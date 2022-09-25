@@ -11,5 +11,6 @@ class LoadingGetHotel extends HomeState{}
 class SuccessGetHotel extends HomeState{}
 class ErrorGetHotel extends HomeState{
  final String error;
+
   ErrorGetHotel({required this.error});
 }
