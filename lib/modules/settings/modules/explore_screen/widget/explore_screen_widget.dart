@@ -1,3 +1,4 @@
+import 'package:bookya/modules/filtter/pages/filtter_screen.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
@@ -87,7 +88,11 @@ class ExploreScreenWidget extends StatelessWidget {
                     ),
               ),
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const FilterScreen(),),);
+
+                  },
                   icon: const Icon(
                     IconBroken.Filter_2,
                     color: Colors.teal,

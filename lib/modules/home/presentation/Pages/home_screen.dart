@@ -9,8 +9,32 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:search_page/search_page.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+
+
+
+List<StorageItem> item = [
+  StorageItem(itemID: 1, name: "Grand Royal Hotel"),
+  StorageItem(itemID: 2, name: "Grand Royal Hotel2"),
+  StorageItem(itemID: 3, name: "Grand Royal Hotel3"),
+  StorageItem(itemID: 4, name: "Grand Royal Hotel4")
+];
+
+class StorageItem {
+  final int itemID;
+  String name;
+
+
+
+  StorageItem({
+    required this.itemID,
+    required this.name,
+  });
+
+}
+
 
 class ExploreModel {
   final String image;
@@ -73,7 +97,33 @@ class HomeScreen extends StatelessWidget {
                 automaticallyImplyLeading: false,
                 toolbarHeight: mediaQuery.height / 6,
                 title:  MyTextFormField(
-                    onTap: () {},
+                    onTap: () {
+
+
+                      showSearch(
+                          context: context,
+                          delegate: SearchPage<StorageItem>(
+                          onQueryUpdate: (s) => print(s),
+                      items: item,
+                      searchLabel: 'Search item',
+                      suggestion: const Center(
+                      child: Text('Filter item by name, status'),
+                      ),
+                      failure: const Center(
+                      child: Text('No item found :('),
+                      ),
+                      filter: (item) => [
+                      item.name,
+                      item.itemID.toString(),
+                      ],
+                      builder: (item) => ListTile(
+                      title: Text(item.name),
+                      subtitle: Text(item.itemID.toString()),
+                      ),
+                      ));
+
+
+                    },
                     onSubmit: () {},
                     prefix: IconButton(
                         icon: Icon(Icons.search,
@@ -82,7 +132,7 @@ class HomeScreen extends StatelessWidget {
                         onPressed: () {}),
                     hintStyle: TextStyle(
                         color: Theme.of(context).backgroundColor),
-                    readOnly: true,
+                    readOnly: false,
                     onChanged: () {},
                     control: searchTextController,
                     type: TextInputType.text,
@@ -247,6 +297,7 @@ class HomeScreen extends StatelessWidget {
                             horizontal: 10.0),
                         child: Container(
                           height: mediaQuery.height/6,
+                          width: mediaQuery.width/2,
                           decoration: BoxDecoration(
                               color: Theme.of(context).backgroundColor,
                               borderRadius: const BorderRadius.horizontal(
@@ -425,11 +476,14 @@ class HomeScreen extends StatelessWidget {
                                     //     ).toList() ,
                                     //   ),
                                     // ),
-                                    Text(
-                                      'EGP${HomeCubit.get(context).homeModel!.data!.data![index].price}',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .headline6,maxLines: 1,softWrap: true,overflow: TextOverflow.ellipsis,
+                                    Flexible(
+                                      child: Text(
+                                        'EGP${HomeCubit.get(context).homeModel!.data!.data![index].price}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .headline6,maxLines: 1,overflow: TextOverflow.ellipsis,
+                                      ),
+                                      fit: FlexFit.loose,
                                     ),
                                     Text(
                                       '/per night',
