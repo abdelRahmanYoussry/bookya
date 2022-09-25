@@ -104,7 +104,7 @@ class ExploreItem extends StatelessWidget {
               radius: 25.0,
               child: IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     IconBroken.Heart,
                     size: 26,
                     color: defaultColor,
