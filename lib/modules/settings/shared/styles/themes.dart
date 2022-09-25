@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 ThemeData darkTheme = ThemeData(
+  //backgroundColor: HexColor('333739'),
+  // HexColor('1a1a1a')
   scaffoldBackgroundColor: HexColor('#1a1a1a'),
   appBarTheme: AppBarTheme(
     centerTitle: true,
@@ -32,7 +34,13 @@ ThemeData darkTheme = ThemeData(
       fontSize: 18.0,
       color: Colors.white,
     ),
+    bodyText2: const TextStyle(
+      fontSize: 27,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
     headline5: const TextStyle(
+      fontSize: 24,
       fontWeight: FontWeight.w400,
       color: Colors.white,
     ),
@@ -43,7 +51,7 @@ ThemeData darkTheme = ThemeData(
     ),
     caption: TextStyle(
       fontSize: 18.0,
-      color: Colors.grey[700],
+      color: Colors.grey[100],
     ),
   ),
   primarySwatch: defaultColor,
@@ -75,6 +83,16 @@ ThemeData lightTheme = ThemeData(
     bodyText1: const TextStyle(
       fontWeight: FontWeight.w600,
       fontSize: 18.0,
+      color: Colors.black,
+    ),
+    bodyText2: const TextStyle(
+      fontSize: 27,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+    headline5: const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
       color: Colors.black,
     ),
     subtitle1: TextStyle(

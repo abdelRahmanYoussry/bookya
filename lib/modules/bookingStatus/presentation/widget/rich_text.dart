@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:flutter/material.dart';
 
 class TextWithTwoColors extends StatelessWidget {
@@ -21,13 +22,24 @@ class TextWithTwoColors extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        style: TextStyle(fontSize: bigTextFontSize, color: bigTextColor),
+        style: DarkModeBloc.get(context).isDark ? const TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 18.0,
+          color: Colors.white,
+        ): Theme.of(context).textTheme.bodyText1!.copyWith(
+          fontSize: 18.0,
+        ),
         text: bigText,
         children: [
           TextSpan(
               text: smallText,
-              style: TextStyle(
-                  fontSize: smallTextFontSize, color: smallTextColor)),
+              style: DarkModeBloc.get(context).isDark ? const TextStyle(
+                fontSize: 18.0,
+                color: Colors.grey,
+              ) : Theme.of(context).textTheme.caption!.copyWith(
+                fontSize: 16.0,
+              ),
+          ),
         ],
       ),
     );

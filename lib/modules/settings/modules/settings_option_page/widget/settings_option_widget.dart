@@ -41,7 +41,7 @@ class SettingsOptionWidget extends StatelessWidget {
                     },
                     thumbColor: defaultColor,
                     activeColor: Colors.white,
-                    trackColor: HexColor('333739').withOpacity(0.6),
+                    trackColor: HexColor('#1a1a1a').withOpacity(0.6),
                   ),
                 ],
               ),

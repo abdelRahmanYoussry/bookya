@@ -1,5 +1,7 @@
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_states.dart';
 import 'package:bookya/modules/settings/shared/network/local/cache_helper.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DarkModeBloc extends Cubit<DarkModeStates>{
@@ -18,6 +20,21 @@ class DarkModeBloc extends Cubit<DarkModeStates>{
         emit(AppChangeModeState());
       });
     }
+  }
 
+  void changeAppColor(String color){
+    if(color == 'Red'){
+      defaultColor = Colors.red;
+      emit(AppChangeColorState());
+    }else if(color == 'Orange'){
+      defaultColor = Colors.orange;
+      emit(AppChangeColorState());
+    }else if(color == 'Amber'){
+      defaultColor = Colors.amber;
+      emit(AppChangeColorState());
+    }else{
+      defaultColor = Colors.teal;
+      emit(AppChangeColorState());
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class CircularIndecator extends StatelessWidget {
@@ -14,7 +15,7 @@ class CircularIndecator extends StatelessWidget {
         height: isActive ? 12 : 8,
         width: isActive ? 12 : 8,
         decoration: BoxDecoration(
-            color: isActive ? Colors.teal : Colors.grey,
+            color: isActive ? defaultColor : Colors.grey,
             borderRadius: const BorderRadius.all(Radius.circular(12))),
       ),
     );

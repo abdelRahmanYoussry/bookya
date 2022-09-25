@@ -25,20 +25,20 @@ class FirstWidget extends StatelessWidget {
                     const SizedBox(height: 120,),
                     Image.asset('assets/icon.png'),
                     const SizedBox(height: 15,),
-                    const Text(
+                    Text(
                       "Bookya",
-                      style: TextStyle(
-                      fontSize: 25,
-                      fontWeight:FontWeight.bold,
-                      color: Colors.white
-                    ),),
-                    const SizedBox(height: 5,),
-                    const Text(
-                      "Best hotel deals for your holiday",
-                      style: TextStyle(
-                        fontSize: 20,
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
                         color: Colors.white
-                    ),),
+                      ),
+                    ),
+                    const SizedBox(height: 5,),
+                    Text(
+                      "Best hotel deals for your holiday",
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                      ),
+                    ),
                     const SizedBox(height: 400,),
                     MyButton(text: "Get Started", height: 50.0, width: 300.0, onPress: (){
                           Navigator.push(
@@ -46,32 +46,6 @@ class FirstWidget extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => const BoardingWidget()));
                     },borderRadius: 15,),
                     const SizedBox(height: 15,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Don\'t have an account?',
-                        ),
-                        TextButton(
-                            onPressed: (){
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const RegisterPage()),
-                              );
-                            },
-
-                            child: const Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: Colors.teal,
-                              ),
-                            ) )
-                      ],
-                    )
-
-
-
-
 
                   ],
                 ),

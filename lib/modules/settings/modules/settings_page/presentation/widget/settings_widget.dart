@@ -1,114 +1,414 @@
+import 'dart:ffi';
+
 import 'package:bookya/modules/settings/modules/edit_account_page/presentation/page/edit_account_page.dart';
 import 'package:bookya/modules/settings/modules/settings_option_page/page/settings_option_page.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_states.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/settings_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SettingsWidget extends StatelessWidget {
   final bool darkMode;
+
   const SettingsWidget({
     Key? key,
     this.darkMode = true,
   }) : super(key: key);
 
   @override
-
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 20.0,
-                bottom: 10.0,
-              ),
-              child: InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const EditAccount(),),);
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
+    return BlocConsumer<DarkModeBloc, DarkModeStates>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        DarkModeBloc cubit = DarkModeBloc.get(context);
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 20.0,
+                    bottom: 10.0,
                   ),
-                  child: Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children:  [
-                          Text(
-                            'Name',
-                            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                              fontSize: 24,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EditAccount(),
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                      ),
+                      child: Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Name',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      fontSize: 24,
+                                    ),
+                              ),
+                              const SizedBox(
+                                height: 3.0,
+                              ),
+                              Text(
+                                'View and edit account',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(
+                                      fontSize: 18.0,
+                                      color: Colors.grey[700],
+                                    ),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          const CircleAvatar(
+                            backgroundImage: AssetImage(
+                              'assets/images/user (2).png',
+                            ),
+                            backgroundColor: Colors.white,
+                            radius: 40.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Dark Theme',
+                      style: Theme.of(context).textTheme.headline5!.copyWith(
+                            fontWeight: FontWeight.w400,
+                          ),
+                    ),
+                    const Spacer(),
+                    CupertinoSwitch(
+                      value: cubit.isDark,
+                      onChanged: (value) {
+                        cubit.changeAppMode();
+                        debugPrint(value.toString());
+                      },
+                      thumbColor: defaultColor,
+                      activeColor: Colors.white,
+                      trackColor: HexColor('#1a1a1a').withOpacity(0.6),
+                    ),
+                  ],
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                  ),
+                  child: MyDivider(),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'Color',
+                      style: Theme.of(context).textTheme.headline5!.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    Spacer(),
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton(
+                        isExpanded: false,
+                        borderRadius: BorderRadius.zero,
+                        icon: const Icon(
+                          Icons.color_lens_rounded,
+                          color: Colors.black,
+                          size: 28.0,
+                        ),
+                        onChanged: (value) {
+                          debugPrint(value.toString());
+                          cubit.changeAppColor(value.toString());
+                        },
+                        items: [
+                          DropdownMenuItem(
+                            value: "Red",
+                            child: Text(
+                              'Red',
+                              style: Theme.of(context).textTheme.headline5!.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.red,
+                              ),
                             ),
                           ),
-                          const SizedBox(
-                            height: 3.0,
+                          DropdownMenuItem(
+                            value: "Amber",
+                            child: Text(
+                              'Amber',
+                              style: Theme.of(context).textTheme.headline5!.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.amber,
+                              ),
+                            ),
                           ),
-                          Text(
-                            'View and edit account',
-                            style: Theme.of(context).textTheme.caption!.copyWith(
-                              fontSize: 18.0,
-                              color: Colors.grey[700],
+                          DropdownMenuItem(
+                            value: "Orange",
+                            child: Text(
+                              'Orange',
+                              style: Theme.of(context).textTheme.headline5!.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.orange,
+                              ),
+                            ),
+                          ),
+                          DropdownMenuItem(
+                            value: "Teal",
+                            child: Text(
+                              'Teal',
+                              style: Theme.of(context).textTheme.headline5!.copyWith(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.teal,
+                              ),
                             ),
                           ),
                         ],
                       ),
-                      const Spacer(),
-                      const CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/user (2).png',),
-                        backgroundColor: Colors.white,
-                        radius: 40.0,
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                  ),
+                  child: MyDivider(),
+                ),
+                SettingsItem(
+                  function: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            const Icon(
+                              Icons.drag_handle,
+                              size: 28,
+                              color: Colors.grey,
+                            ),
+                            const SizedBox(
+                              height: 30.0,
+                            ),
+                            Row(
+                              children: const [
+                                Icon(
+                                  IconBroken.Call,
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  'Mostafa Gado',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  '0123456789',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                              ),
+                              child: MyDivider(),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(
+                                  IconBroken.Call,
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  'Mostafa Gado',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  '0123456789',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                              ),
+                              child: MyDivider(),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(
+                                  IconBroken.Call,
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  'Mostafa Gado',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  '0123456789',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                              ),
+                              child: MyDivider(),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(
+                                  IconBroken.Call,
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  'Mostafa Gado',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  '0123456789',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                              ),
+                              child: MyDivider(),
+                            ),
+                            Row(
+                              children: const [
+                                Icon(
+                                  IconBroken.Call,
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  'Mostafa Gado',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 20.0,
+                                ),
+                                Text(
+                                  '0123456789',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 22,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 10.0,
+                              ),
+                              child: MyDivider(),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  text: 'About us',
+                  icon: IconBroken.Info_Circle,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                  ),
+                  child: MyDivider(),
+                ),
+                SettingsItem(
+                  function: () {},
+                  text: 'Sign out',
+                  icon: IconBroken.Logout,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                  ),
+                  child: MyDivider(),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            SettingsItem(
-              function: (){},
-              text: 'Change password',
-              icon: IconBroken.Lock,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 10.0,
-              ),
-              child: MyDivider(),
-            ),
-            SettingsItem(
-              function: (){},
-              text: 'Help Center',
-              icon: IconBroken.Info_Circle,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 10.0,
-              ),
-              child: MyDivider(),
-            ),
-            SettingsItem(
-              function: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsOptionPage(),),);
-              },
-              text: 'Settings',
-              icon: IconBroken.Setting,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 10.0,
-              ),
-              child: MyDivider(),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

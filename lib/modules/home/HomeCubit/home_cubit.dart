@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'home_state.dart';
 
@@ -27,5 +29,21 @@ class HomeCubit extends Cubit<HomeState> {
   {
     indicatorIndex = index;
     emit(ChangeIndicator());
+  }
+
+  void changeAppColor(String color){
+    if(color == 'Red'){
+      defaultColor = Colors.red;
+      emit(AppChangeColorState());
+    }else if(color == 'Orange'){
+      defaultColor = Colors.orange;
+      emit(AppChangeColorState());
+    }else if(color == 'Amber'){
+      defaultColor = Colors.amber;
+      emit(AppChangeColorState());
+    }else{
+      defaultColor = Colors.teal;
+      emit(AppChangeColorState());
+    }
   }
 }

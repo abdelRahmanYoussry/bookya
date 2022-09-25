@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/shared/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class CustomTextButton extends StatelessWidget {
         padding:const  EdgeInsets.symmetric(horizontal: 40 , vertical: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            color: mainColor,
+            color: defaultColor,
             borderRadius: BorderRadius.circular(32)
         ),
         child: Text(title , style:  const TextStyle(color: Colors.white, fontSize: 18 , fontWeight: FontWeight.w500),),

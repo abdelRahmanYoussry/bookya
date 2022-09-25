@@ -1,4 +1,7 @@
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+
 
 class NoDataToSHow extends StatelessWidget {
   final double height;
@@ -8,7 +11,8 @@ class NoDataToSHow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: DarkModeBloc.get(context).isDark ?  HexColor('#1a1a1a') : Colors.white,
       height: height / 1.5,
       width: width,
       child: Column(
@@ -20,9 +24,14 @@ class NoDataToSHow extends StatelessWidget {
               'assets/Hotel_Booking.png',
             ),
           ),
-          const Text(
+          Text(
             "There isn't any data here to show \n go and book now",
             textAlign: TextAlign.center,
+            style: DarkModeBloc.get(context).isDark ? const TextStyle(
+              color: Colors.white
+            ) : const TextStyle(
+              color: Colors.black,
+            ),
           )
         ],
       ),

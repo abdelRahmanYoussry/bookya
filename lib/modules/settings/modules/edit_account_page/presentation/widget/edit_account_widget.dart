@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/edit_profile_item.dart';
@@ -44,7 +45,7 @@ class EditAccountWidget extends StatelessWidget {
                       ),
                     ),
                     CircleAvatar(
-                      backgroundColor: Colors.teal[200],
+                      backgroundColor: defaultColor[200],
                       radius: 20.0,
                       child: IconButton(
                           onPressed: (){},

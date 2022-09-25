@@ -1,4 +1,7 @@
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
+
 
 
 class MyButton extends StatelessWidget {
@@ -6,17 +9,17 @@ class MyButton extends StatelessWidget {
   final Color textColor;
   final double height;
   final double width;
-  final Color backGroundColor;
+  Color? backGroundColor;
   final double borderRadius;
   final VoidCallback onPress;
 
-  const MyButton({
+  MyButton({
     Key? key,
     required this.text,
     this.textColor = Colors.white,
-    required this.height ,
+    this.height = 54.0,
     required this.width ,
-    this.backGroundColor = Colors.teal,
+    this.backGroundColor,
     this.borderRadius = 8.0,
     required this.onPress,
 
@@ -29,7 +32,7 @@ class MyButton extends StatelessWidget {
       height: height,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(backGroundColor),
+          backgroundColor: MaterialStateProperty.all(defaultColor),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(borderRadius),
@@ -43,7 +46,8 @@ class MyButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-              color: textColor
+              color: textColor,
+            fontSize: 18.0,
           ),
         ),),
     );

@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-const defaultColor = Colors.teal;
+MaterialColor defaultColor = Colors.teal;

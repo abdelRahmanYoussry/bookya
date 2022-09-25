@@ -1,5 +1,7 @@
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import '../pages/list_of_bookings.dart';
 
 /*List aa = [
@@ -158,7 +160,7 @@ class TabScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             elevation: 1.0,
-            backgroundColor: Colors.teal,
+            backgroundColor: DarkModeBloc.get(context).isDark ?  HexColor('#1a1a1a') : defaultColor,
             bottom: const TabBar(
               labelColor: Colors.white,
               indicatorColor: Colors.white,

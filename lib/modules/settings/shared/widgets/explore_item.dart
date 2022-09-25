@@ -33,7 +33,7 @@ class ExploreItem extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: DarkModeBloc.get(context).isDark ? HexColor('#2c2c2c') : Colors.white,
+                    color: DarkModeBloc.get(context).isDark ? HexColor('#2c2c2c') : Colors.grey[200],
                     borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(15.0),
                       bottomLeft: Radius.circular(15.0),
@@ -73,9 +73,9 @@ class ExploreItem extends StatelessWidget {
                           const SizedBox(
                             width: 2,
                           ),
-                          const Icon(
+                          Icon(
                             Icons.location_on,
-                            color: Colors.teal,
+                            color: defaultColor,
                           ),
                           Text(
                             '2 Km to...',
@@ -104,7 +104,7 @@ class ExploreItem extends StatelessWidget {
               radius: 25.0,
               child: IconButton(
                   onPressed: (){},
-                  icon: const Icon(
+                  icon: Icon(
                     IconBroken.Heart,
                     size: 26,
                     color: defaultColor,
