@@ -41,9 +41,17 @@ class EditAccountWidgetState extends State<EditAccountWidget> {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(leading: GestureDetector(
+        appBar: AppBar(title:
+        Text(
+          'Edit profile',
+          style: Theme.of(context).textTheme.headline5!.copyWith(
+            fontSize: 28,color: Colors.white
+          ),
+        ),
+          leading: GestureDetector(
             onTap: (){
               Navigator.pop(context,rxSelected.hasValue ? rxSelected.value : false);
+
             },
             child: const Icon(Icons.arrow_back , color: Colors.white,)),),
         body: SingleChildScrollView(
@@ -84,12 +92,7 @@ class EditAccountWidgetState extends State<EditAccountWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Edit profile',
-                              style: Theme.of(context).textTheme.headline5!.copyWith(
-                                fontSize: 28,
-                              ),
-                            ),
+
                             const SizedBox(
                               height: 30.0,
                             ),
