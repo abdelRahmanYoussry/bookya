@@ -297,7 +297,7 @@ class HomeScreen extends StatelessWidget {
                           height: mediaQuery.height/6,
                           width: mediaQuery.width/2,
                           decoration: BoxDecoration(
-                              color: Theme.of(context).backgroundColor,
+                              color: Theme.of(context).backgroundColor, // Container background color
                               borderRadius: const BorderRadius.horizontal(
                                 left: Radius.circular(20),
                                 right: Radius.circular(20),
@@ -310,7 +310,7 @@ class HomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: mediaQuery.width/ 3.5,
+                                  width: mediaQuery.width/ 4.5,
                                   height: mediaQuery.height / 8,
                                   decoration: const BoxDecoration(
                                     color: Colors.white,

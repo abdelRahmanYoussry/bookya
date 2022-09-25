@@ -1,1 +1,1 @@
-const hotelUrl='http://api.mahmoudtaha.com/api/hotels';
+const hotelUrl='hotels';

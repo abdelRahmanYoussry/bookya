@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
-class NoDataToSHow extends StatelessWidget {
+class NoDataToShow extends StatelessWidget {
   final double height;
   final double width;
-  const NoDataToSHow({Key? key, required this.height, required this.width})
+  final String imagePath;
+  final String quoteBelowImage;
+  const NoDataToShow(
+      {Key? key,
+      required this.height,
+      required this.width,
+      required this.imagePath,
+      required this.quoteBelowImage})
       : super(key: key);
 
   @override
@@ -17,11 +24,11 @@ class NoDataToSHow extends StatelessWidget {
         children: [
           Flexible(
             child: Image.asset(
-              'assets/Hotel_Booking.png',
+              imagePath,
             ),
           ),
-          const Text(
-            "There isn't any data here to show \n go and book now",
+          Text(
+            quoteBelowImage,
             textAlign: TextAlign.center,
           )
         ],

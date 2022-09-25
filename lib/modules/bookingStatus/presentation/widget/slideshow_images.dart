@@ -7,12 +7,12 @@ class SlideShow extends StatelessWidget {
   final double width;
 
   final List images;
-  const SlideShow(
-      {Key? key,
-      required this.height,
-      required this.images,
-      required this.width})
-      : super(key: key);
+  const SlideShow({
+    Key? key,
+    required this.height,
+    required this.images,
+    required this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class SlideShow extends StatelessWidget {
       height: height / 3.5,
       width: double.infinity,
       child: PageView.builder(
-        itemCount: images.length,
+        itemCount: images[0].length,
         pageSnapping: true,
         itemBuilder: (context, pagePosition) {
           return Column(
@@ -29,8 +29,8 @@ class SlideShow extends StatelessWidget {
                 child: SizedBox(
                   height: height / 3.5,
                   width: double.infinity,
-                  child: Image.asset(
-                    images[pagePosition],
+                  child: Image.network(
+                    images[0][pagePosition],
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -38,7 +38,7 @@ class SlideShow extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for (int i = 0; i < images.length; i++)
+                  for (int i = 0; i < images[0].length; i++)
                     if (i == pagePosition) ...[
                       const CircularIndecator(isActive: true)
                     ] else

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bookya/modules/boarding_pages/presentation/pages/boarding_screen.dart';
+import 'package:bookya/modules/bookingStatus/bloc/cubit.dart';
 import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
 import 'package:bookya/modules/home/HomeCubit/BlocObserver.dart';
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
@@ -38,6 +39,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HomeCubit()..getHotels()),
         BlocProvider(create: (context) => RegisterBloc()),
         BlocProvider(create: (context) => SettingsBloc()),
+        BlocProvider(
+            create: (context) => MyBookingCubit()
+              ..getBookingDataOngoing()
+              ..getBookingDataCancelled()
+              ..getBookingDataCompleted()),
       ],
       child: BlocConsumer<DarkModeBloc, DarkModeStates>(
         listener: (context, state) {

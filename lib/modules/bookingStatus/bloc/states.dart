@@ -4,7 +4,13 @@ abstract class MyBookingStates {}
 
 class MyBookingInitialState extends MyBookingStates {}
 
-class MyBookingLoadingState extends MyBookingStates {}
+class MyBookingCancelledLoadingState extends MyBookingStates {}
+
+class MyBookingOngoingLoadingState extends MyBookingStates {}
+
+class MyBookingCompletedLoadingState extends MyBookingStates {}
+
+class MyBookingUpdateStatusLoadingState extends MyBookingStates {}
 
 class MyBookingErrorState extends MyBookingStates {
   final String error;
@@ -25,3 +31,9 @@ class MyBookingOngoingSuccessState extends MyBookingStates {
   final MyBookingModel bookingModel;
   MyBookingOngoingSuccessState(this.bookingModel);
 }
+
+class MyBookingUpdatingStatusSuccessState extends MyBookingStates {}
+
+class MyBookingCreateBookingSuccessState extends MyBookingStates {}
+
+class MyBookingCreateBookingLoadingState extends MyBookingStates {}

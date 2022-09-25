@@ -25,7 +25,7 @@ class ImageWithShadow extends StatelessWidget {
       width: height / 6.4,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(5),
-        child: Image.asset(
+        child: Image.network(
           imagePath,
           fit: BoxFit.fill,
         ),
