@@ -23,6 +23,7 @@ class Data {
   String? email;
   String? apiToken;
   String? createdAt;
+  String? image;
   String? updatedAt;
 
   Data(
@@ -31,6 +32,7 @@ class Data {
         this.email,
         this.apiToken,
         this.createdAt,
+        this.image,
         this.updatedAt,
       });
 
@@ -38,6 +40,7 @@ class Data {
     id = json['id'];
     name = json['name'];
     email = json['email'];
+    image = json['image'] ?? "";
     apiToken = json['api_token'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];

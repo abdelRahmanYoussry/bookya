@@ -47,6 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+        resizeToAvoidBottomInset : false,
         body: BlocListener<RegisterBloc, RegisterState>(
           bloc: registerBloc,
           listener: (context, snapshot) {

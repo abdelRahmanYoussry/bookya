@@ -4,7 +4,11 @@
         android:label="bookya"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyBbmMq_DQ0oWxhHyt3HzKW4kP6UATWI5Dw"/>
+
+
+       <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"

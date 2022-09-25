@@ -1,3 +1,4 @@
+import 'package:bookya/modules/map/map_screen.dart';
 import 'package:bookya/modules/settings/modules/explore_screen/widget/explore_screen_widget.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 
@@ -21,7 +22,11 @@ class ExploreHomeScreen extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (c){
+                return  MapScreen();
+              }));
+            },
             icon: const Icon(
               Icons.map,
             ),

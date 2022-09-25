@@ -5,11 +5,16 @@ class EditProfileItem extends StatelessWidget {
   final String hintText;
   final bool isPassword;
   final TextInputType keyBoard;
-  const EditProfileItem({
+  String? Function(String?)  onValidator;
+  TextEditingController controller ;
+
+  EditProfileItem({
     Key? key,
     required this.text,
     required this.hintText,
     this.isPassword = false,
+    required this.controller,
+    required this.onValidator,
     required this.keyBoard,
   }) : super(key: key);
 
@@ -29,6 +34,8 @@ class EditProfileItem extends StatelessWidget {
           child: TextFormField(
             obscureText: isPassword,
             keyboardType: keyBoard,
+            controller: controller,
+            validator:onValidator,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,

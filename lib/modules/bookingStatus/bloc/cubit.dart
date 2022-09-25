@@ -1,8 +1,8 @@
+import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/states.dart';
 import '../data/model/mybooking.dart';
-import '../data/network/helper/dio_helper.dart';
 import '../data/network/endpoints.dart';
 
 class MyBookingCubit extends Cubit<MyBookingStates> {
@@ -12,7 +12,8 @@ class MyBookingCubit extends Cubit<MyBookingStates> {
   late MyBookingModel bookingModel;
   void postUpdatedpdateBooking({required String type, required int bookingId}) {
     emit(MyBookingLoadingState());
-    DioHelper.postData(
+    FinalDioHelper
+        .postData(
         url: updateBookingStatus,
         data: {'booking_id': 7, 'type': 'cancelled'}).then((value) {
       debugPrint(value.data);
@@ -28,7 +29,7 @@ class MyBookingCubit extends Cubit<MyBookingStates> {
   void getBookingData(String type) {
     emit(MyBookingLoadingState());
 
-    DioHelper.getData(url: bookingResponseData, query: {
+    FinalDioHelper.getData(url: bookingResponseData, query: {
       'type': type,
       'count': 10,
     }).then((value) {
