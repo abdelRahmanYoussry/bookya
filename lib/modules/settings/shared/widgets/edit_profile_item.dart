@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:flutter/material.dart';
 
 class EditProfileItem extends StatelessWidget {
@@ -23,13 +24,15 @@ class EditProfileItem extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          text,
-          style: Theme.of(context).textTheme.subtitle1,
+        Expanded(
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
         ),
-        const Spacer(),
+
         Container(
-          width: 170.0,
+          width: 200.0,
           height: 50.0,
           child: TextFormField(
             obscureText: isPassword,
@@ -45,10 +48,11 @@ class EditProfileItem extends StatelessWidget {
               ),
             ),
             cursorHeight: 25,
-            style: const TextStyle(
-              color: Colors.black,
+            style: TextStyle(
+              color: DarkModeBloc.get(context).isDark ? Colors.grey : Colors.black,
               fontSize: 22,
               fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ),

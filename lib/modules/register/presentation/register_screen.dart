@@ -1,7 +1,10 @@
 import 'package:bookya/modules/login/presentation/login_screen.dart';
 import 'package:bookya/modules/register/data/register_request.dart';
 import 'package:bookya/modules/register/domain/register_bloc.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/shared/colors.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:bookya/shared/widgets/text_button.dart';
 import 'package:bookya/shared/widgets/text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +41,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
   @override
   void initState() {
-    Icon visibilityOff =  Icon(Icons.visibility_off_outlined,color: mainColor);
+    Icon visibilityOff =  Icon(Icons.visibility_off_outlined,color: defaultColor);
     rxPassword.sink.add({visibilityOff: true});
     rxConfirmPassword.sink.add({visibilityOff: true});
     super.initState();
@@ -79,7 +82,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Container(
                 height: MediaQuery.of(context).size.height * .4,
                 width: MediaQuery.of(context).size.width,
-                color: mainColor,
+                color: defaultColor,
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,10 +120,14 @@ class _RegisterPageState extends State<RegisterPage> {
                           height: MediaQuery.of(context).size.height * .35,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
-                              color: Colors.white,
+                              color: DarkModeBloc.get(context).isDark
+                                  ? HexColor('#1a1a1a').withOpacity(0.9)
+                                  : Colors.white,
                               boxShadow: [
                                 BoxShadow(
-                                    color: Colors.teal.shade100,
+                                    color: DarkModeBloc.get(context).isDark
+                                        ? Colors.grey.shade700
+                                        : defaultColor.shade100,
                                     blurRadius: 9,
                                     spreadRadius: 2,
                                     offset: const Offset(0, 5)
@@ -160,9 +167,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                             :
                                         snapshot.data!.keys.first, onIconPress: (){
                                       if(snapshot.data!.values.first == false){
-                                          rxPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: mainColor):true});
+                                          rxPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: defaultColor):true});
                                       }else {
-                                        rxPassword.sink.add({  Icon(Icons.visibility,color: mainColor):false});
+                                        rxPassword.sink.add({  Icon(Icons.visibility,color: defaultColor):false});
                                         }
                                       },
                                         onValidator:(String? value){
@@ -182,9 +189,9 @@ class _RegisterPageState extends State<RegisterPage> {
                                             :
                                         snapshot.data!.keys.first,onIconPress: (){
                                           if(snapshot.data!.values.first == false){
-                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: mainColor,):true});
+                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility_off_rounded,color: defaultColor,):true});
                                           }else {
-                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility,color: mainColor,):false});
+                                            rxConfirmPassword.sink.add({  Icon(Icons.visibility,color: defaultColor,):false});
                                           }
                                         },
                                         onValidator:(String? value){
@@ -221,7 +228,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     return const LoginPage();
                                   }));
                                 },
-                                child: const Text("Login here? " , style:   TextStyle(color: Colors.blueAccent ,fontSize: 16),)),
+                                child: Text("Login here? " , style:   TextStyle(color: defaultColor ,fontSize: 16),)),
                           ],
                         ),
 

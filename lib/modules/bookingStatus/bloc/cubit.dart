@@ -15,14 +15,49 @@ class MyBookingCubit extends Cubit<MyBookingStates> {
   MyBookingModel? bookingCompletedModel;
   MyBookingModel? bookingCancelledModel;
 
-  void postUpdatedpdateBooking({required String type, required int bookingId}) {
-    FinalDioHelper.postData(
-        url: updateBookingStatus,
-        data: {'booking_id': 7, 'type': 'completed'}).then((value) {
-      debugPrint(value.data);
+  // void postUpdatedpdateBooking({required String type, required int bookingId}) {
+  //   FinalDioHelper.postData(
+  //       url: updateBookingStatus,
+  //       data: {'booking_id': 7, 'type': 'completed'}).then((value) {
+  //     debugPrint(value.data);
+  //
+  //     emit(MyBookingUpdatingStatusSuccessState());
+  //     debugPrint('Update Booking' + value.data);
+  //   }).catchError((error) {
+  //     debugPrint('update error:' + error.toString());
+  //     emit(MyBookingErrorState(error.toString()));
+  //   });
+  // }
+  //
+  // void postCreateBooking({required int userId, required int hotelId}) {
+  //   FinalDioHelper.postData(
+  //       url: createBooking,
+  //       data: {'user_id': userId, 'hotel_id': hotelId}).then((value) {
+  //     debugPrint(value.data);
+  //
+  //     emit(MyBookingCreateBookingSuccessState());
+  //     debugPrint('Create Booking' + value.data);
+  //   }).catchError((error) {
+  //     debugPrint('Create error:' + error.toString());
+  //     emit(MyBookingErrorState(error.toString()));
+  //   });
+  // }
 
+  void postUpdatedBookingStatus(
+      {required String type, required int bookingId}) {
+    FinalDioHelper.postData(
+      url: updateBookingStatus,
+      dataTobody: {
+        'booking_id': bookingId,
+        'type': type,
+      },
+    ).then((value) {
+      debugPrint(value.data.toString());
       emit(MyBookingUpdatingStatusSuccessState());
-      debugPrint('Update Booking' + value.data);
+      getBookingDataCancelled();
+      getBookingDataCompleted();
+      getBookingDataOngoing();
+      debugPrint('Update Booking:' + value.data.toString());
     }).catchError((error) {
       debugPrint('update error:' + error.toString());
       emit(MyBookingErrorState(error.toString()));
@@ -30,13 +65,22 @@ class MyBookingCubit extends Cubit<MyBookingStates> {
   }
 
   void postCreateBooking({required int userId, required int hotelId}) {
+    debugPrint('reach loading in create booking');
+    emit(MyBookingCreateBookingLoadingState());
     FinalDioHelper.postData(
-        url: createBooking,
-        data: {'user_id': userId, 'hotel_id': hotelId}).then((value) {
-      debugPrint(value.data);
+      url: createBooking,
+      dataTobody: {
+        'user_id': userId,
+        'hotel_id': hotelId,
+      },
+    ).then((value) {
+      debugPrint(value.data.toString());
 
       emit(MyBookingCreateBookingSuccessState());
-      debugPrint('Create Booking' + value.data);
+      debugPrint('Create Booking' + value.data.toString());
+      getBookingDataCancelled();
+      getBookingDataCompleted();
+      getBookingDataOngoing();
     }).catchError((error) {
       debugPrint('Create error:' + error.toString());
       emit(MyBookingErrorState(error.toString()));

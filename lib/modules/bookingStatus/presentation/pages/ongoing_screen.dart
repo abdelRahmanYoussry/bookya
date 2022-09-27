@@ -1,3 +1,5 @@
+import 'package:bookya/modules/bookingStatus/bloc/cubit.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import '../../data/network/endpoints.dart';
@@ -5,7 +7,7 @@ import '../widget/nodata_toshow.dart';
 import '../widget/nodata_toshow.dart';
 import '../widget/rating_stars.dart';
 import '../widget/rich_text.dart';
-
+import 'package:hexcolor/hexcolor.dart';
 import '../pages/more_booking_details.dart';
 
 class UpComingScreen extends StatelessWidget {
@@ -21,6 +23,7 @@ class UpComingScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     containData = dataToShow.status.type.toString() == '1';
     return Scaffold(
+      backgroundColor: DarkModeBloc.get(context).isDark ? Colors.black : Colors.white,
         body: ConditionalBuilder(
           condition: containData == true,
           builder: (context) => ListView.builder(
@@ -34,7 +37,7 @@ class UpComingScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.shade300,
+                          color: DarkModeBloc.get(context).isDark ? Colors.grey.shade300 : Colors.white,
                           offset: Offset.fromDirection(140.0),
                           blurRadius: 1.0,
                           spreadRadius: 1.0,
@@ -67,7 +70,45 @@ class UpComingScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(dataToShow.data!.data?[index].hotel!.name,),
+                          // Text(dataToShow.data!.data?[index].hotel!.name,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(' ${dataToShow.data!.data?[index].hotel.name}',
+                            style: const TextStyle(
+                              fontSize: 23.0,
+                            ),
+                          ),
+                          PopupMenuButton<int>(
+                              onSelected: (value) {
+                                // if value 1 show dialog
+                                if (value == 1) {
+                                  MyBookingCubit.get(context)
+                                      .postUpdatedBookingStatus(
+                                      type: 'completed',
+                                      bookingId:
+                                      dataToShow.data!.data?[index].id);
+                                  // if value 2 show dialog
+                                } else if (value == 2) {
+                                  MyBookingCubit.get(context)
+                                      .postUpdatedBookingStatus(
+                                      type: 'cancelled',
+                                      bookingId:
+                                      dataToShow.data!.data?[index].id);
+                                }
+                              },
+                              itemBuilder: (context) => const [
+                                PopupMenuItem(
+                                  value: 1,
+                                  child: Text('Completed'),
+                                ),
+                                PopupMenuItem(
+                                  value: 2,
+                                  child: Text('Cancelled'),
+                                )
+                              ]),
+                        ],
+                      ),
                           Flexible(
                             child: Text(
                               dataToShow.data!.data?[index].hotel!.description,
@@ -91,7 +132,7 @@ class UpComingScreen extends StatelessWidget {
                               ),
                             ],
                           ),
-                        ],
+                      ],
                       ),
                     ),
                   ),

@@ -1,9 +1,12 @@
 import 'package:bookya/modules/filtter/pages/filtter_screen.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/explore_item.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
+
 
 class ExploreScreenWidget extends StatelessWidget {
   const ExploreScreenWidget({Key? key}) : super(key: key);
@@ -35,8 +38,8 @@ class ExploreScreenWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                const VerticalDivider(
-                  color: Colors.white,
+                VerticalDivider(
+                  color: DarkModeBloc.get(context).isDark ? Colors.white :HexColor('#1a1a1a') ,
                   thickness: 2,
                 ),
                 Expanded(
@@ -93,9 +96,9 @@ class ExploreScreenWidget extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const FilterScreen(),),);
 
                   },
-                  icon: const Icon(
+                  icon: Icon(
                     IconBroken.Filter_2,
-                    color: Colors.teal,
+                    color: defaultColor,
 
                   ))
             ],

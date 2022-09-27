@@ -5,9 +5,14 @@ import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/home/HomeCubit/home_state.dart';
 import 'package:bookya/modules/home/presentation/Pages/home_screen.dart';
 import 'package:bookya/modules/settings/modules/settings_page/presentation/page/settings_home.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_states.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
+
 
 
 
@@ -42,6 +47,11 @@ class AllTabsScreen extends StatelessWidget {
       TabScreen(),
       SettingsHome(),
     ];
+    return BlocConsumer<DarkModeBloc, DarkModeStates>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -55,9 +65,11 @@ class AllTabsScreen extends StatelessWidget {
                     decoration:  BoxDecoration(
                       color: Theme.of(context).backgroundColor,
                       borderRadius:  const BorderRadius.all(Radius.circular(25)),
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
-                            color: Colors.white,
+                            color:  DarkModeBloc.get(context).isDark
+                                ? Colors.grey.shade900
+                                : Colors.white,
                             spreadRadius: 0,
                             blurRadius: 10),
                       ],
@@ -66,13 +78,17 @@ class AllTabsScreen extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: const BorderRadius.all(Radius.circular(25)),
                       child: BottomNavigationBar(
-                        backgroundColor: Theme.of(context).primaryColor,
+                        backgroundColor: defaultColor,
                         type: BottomNavigationBarType.fixed,
                         selectedLabelStyle: const TextStyle(fontSize: 14,fontWeight: FontWeight.bold),
                         items: bottomNavBarList,
                         currentIndex: cubit.currentIndex,
                         selectedIconTheme: const IconThemeData(color: Colors.white,size: 30),
-                        selectedItemColor: Theme.of(context).backgroundColor,
+                        selectedItemColor: Colors.white,
+                        // unselectedIconTheme: const IconThemeData(
+                        //   color: Colors.white,
+                        // ),
+                        // unselectedItemColor: Colors.white,
                         onTap: (index) {
                           cubit.changeNavBar(index);
                         },
@@ -81,5 +97,7 @@ class AllTabsScreen extends StatelessWidget {
         );
       },
     );
+  },
+);
   }
 }

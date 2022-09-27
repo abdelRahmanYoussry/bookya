@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class MainButton extends StatelessWidget {
@@ -22,7 +23,7 @@ class MainButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           15.0,
         ),
-        color: Colors.teal,
+        color: defaultColor,
       ),
       child: MaterialButton(
         height: 54,

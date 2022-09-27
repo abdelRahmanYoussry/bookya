@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:bookya/modules/settings/modules/edit_account_page/data/UpdateProfileModel.dart';
 import 'package:bookya/modules/settings/modules/edit_account_page/domain/edit_profile_bloc.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/edit_profile_item.dart';
@@ -130,7 +131,7 @@ class EditAccountWidgetState extends State<EditAccountWidget> {
                                         }
                                       },
                                       child: CircleAvatar(
-                                        backgroundColor: Colors.teal[200],
+                                        backgroundColor: defaultColor[200],
                                         radius: 20.0,
                                         child: IconButton(
                                             onPressed: () async{
@@ -183,9 +184,8 @@ class EditAccountWidgetState extends State<EditAccountWidget> {
                               hintText: 'Email',
                               keyBoard: TextInputType.emailAddress,
                             ),
-                            const MyDivider(),
                             const SizedBox(
-                              height: 15.0,
+                              height: 100.0,
                             ),
                             MainButton(
                               text: 'Submit',

@@ -1,3 +1,4 @@
+import 'package:bookya/shared/shared_pref.dart';
 import 'package:dio/dio.dart';
 import '../endpoints.dart';
 
@@ -24,16 +25,28 @@ class FinalDioHelper{
     return await dio.get(baseUrl + url, queryParameters: query);
   }
 
+  // static Future<Response> postData({
+  //   String token =
+  //   'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
+  //   required String url,
+  //   Map<String, dynamic>? query,
+  //   required Map<String, dynamic> data,
+  // }) async {
+  //   dio.options.headers = {
+  //     'token': token,
+  //   };
+  //   return dio.post(baseUrl + url, queryParameters: query, data: data);
+  // }
+
   static Future<Response> postData({
-    String token =
-    'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
     required String url,
-    Map<String, dynamic>? query,
-    required Map<String, dynamic> data,
+    // String token = SharedPref.getToken(),
+    //Map<String, dynamic>? query,
+    required Map<String, dynamic> dataTobody,
   }) async {
     dio.options.headers = {
-      'token': token,
+      'token': SharedPref.getToken(),
     };
-    return dio.post(baseUrl + url, queryParameters: query, data: data);
+    return dio.post(baseUrl + url, data: dataTobody);
   }
 }

@@ -23,6 +23,14 @@ class SharedPref {
     await _sharedPreferences!.setString(imageKey, image);
   }
 
+  static saveUserId(int ID)async{
+    await _sharedPreferences!.setInt(userIdKey, ID);
+  }
+
+  static getUserId()async{
+    return _sharedPreferences!.getInt(userIdKey);
+  }
+
   static String? getImage() {
     return _sharedPreferences!.getString(imageKey);
   }
@@ -37,4 +45,6 @@ class SharedPref {
   static String? getToken() {
     return _sharedPreferences!.getString(tokenKey);
   }
+
+
 }

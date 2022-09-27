@@ -73,9 +73,9 @@ class ExploreItem extends StatelessWidget {
                           const SizedBox(
                             width: 2,
                           ),
-                          const Icon(
+                          Icon(
                             Icons.location_on,
-                            color: Colors.teal,
+                            color: defaultColor,
                           ),
                           Text(
                             '2 Km to...',

@@ -4,6 +4,8 @@ import 'package:bookya/modules/bookingStatus/bloc/cubit.dart';
 import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
 import 'package:bookya/modules/home/HomeCubit/BlocObserver.dart';
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
+import 'package:bookya/modules/home/presentation/Pages/Tabs_screen.dart';
+import 'package:bookya/modules/home/presentation/Pages/home_screen.dart';
 import 'package:bookya/modules/register/domain/register_bloc.dart';
 import 'package:bookya/modules/settings/modules/settings_option_page/cubit/cubit.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
@@ -23,12 +25,20 @@ void main() async {
   FinalDioHelper.init();
   bool? isDark = CacheHelper.getData(key: 'isDark');
   debugPrint(isDark.toString());
-  runApp(MyApp(isDark: isDark));
+  Widget? widget;
+  String? token = SharedPref.getToken();
+  if(token == null){
+    widget = const BoardingScreen();
+  }else{
+    widget = const AllTabsScreen();
+  }
+  runApp(MyApp(isDark: isDark, startScreen: widget,));
 }
 
 class MyApp extends StatelessWidget {
   bool? isDark;
-  MyApp({Key? key, required this.isDark}) : super(key: key);
+  Widget? startScreen;
+  MyApp({Key? key, required this.isDark, this.startScreen}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -57,7 +67,7 @@ class MyApp extends StatelessWidget {
             themeMode: DarkModeBloc
                 .get(context)
                 .isDark ? ThemeMode.dark : ThemeMode.light,
-            home: const BoardingScreen(),
+            home: startScreen,
           );
         },
       ),

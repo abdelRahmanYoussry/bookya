@@ -1,4 +1,5 @@
 import 'package:bookya/modules/bookingStatus/presentation/pages/list_of_bookings.dart';
+import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -36,7 +37,7 @@ class TabScreen extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(
                 elevation: 1.0,
-                backgroundColor: Colors.teal,
+                backgroundColor: defaultColor,
                 bottom: const TabBar(
                   labelColor: Colors.white,
                   indicatorColor: Colors.white,
