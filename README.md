@@ -34,9 +34,26 @@ The main packages used in the project:
    syncfusion_flutter_sliders: ^20.2.50
    flutter_switch: ^0.3.2
 ```
+
 ### Application description
 
 The app authenticate the user data redirecting him to the login in screen after registering to browse the hotels, The user can change the theme color chosing between light and dark theme not only the theme mode but also toggling between set of colors to choose the preferable color. The hotels is displayed in the map if the user needs to check the hotel location. Also a list of facilities is diplayed for the user to filter for the best hotel chooice. 
+
+### Features
+
+1. OnBoarding 
+2. Login
+3. Regiester
+4. Update account
+5. Home
+6. Create booking - Update booking
+7. Settings
+8. Dark mode
+9. Change color
+10. Map
+11. Filter 
+12. Search
+
 
 
 ### Table of Contents
@@ -142,6 +159,8 @@ resValue "string", "gms_api_key", ""
 
 
 ## Project structure <a name="structure"></a>
+
+Clean Code Structure (features) -> Every module has its own feature. 
 
 ![bookya folders](https://user-images.githubusercontent.com/73221261/193343179-0f28e9ce-de61-4345-bc6a-e2b929d2bf81.png)
 
