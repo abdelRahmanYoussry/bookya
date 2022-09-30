@@ -9,6 +9,7 @@ Bloc ([flutter_bloc](https://pub.dev/packages/flutter_bloc)) is used as an appro
 
 The main packages used in the project:
 
+
 ```yaml
   flutter_lints: ^2.0.0
    conditional_builder_null_safety: ^0.0.6
