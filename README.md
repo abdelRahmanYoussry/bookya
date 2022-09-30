@@ -147,7 +147,7 @@ resValue "string", "gms_api_key", ""
 
 ## Project structure <a name="structure"></a>
 
-<img src="https://drive.google.com/file/d/1C3nu0Lr4L7jr1eSY8bgQ_fZSvam5TeAs/view?usp=sharing" alt="folders" style="zoom:67%;" />
+![bookya folders](https://user-images.githubusercontent.com/73221261/193343179-0f28e9ce-de61-4345-bc6a-e2b929d2bf81.png)
 
 
 |   |   |
