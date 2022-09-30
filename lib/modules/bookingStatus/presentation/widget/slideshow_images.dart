@@ -20,7 +20,7 @@ class SlideShow extends StatelessWidget {
       height: height / 3.5,
       width: double.infinity,
       child: PageView.builder(
-        itemCount: images[0].length,
+        itemCount: images.length,
         pageSnapping: true,
         itemBuilder: (context, pagePosition) {
           return Column(
@@ -30,7 +30,7 @@ class SlideShow extends StatelessWidget {
                   height: height / 3.5,
                   width: double.infinity,
                   child: Image.network(
-                    images[0][pagePosition],
+                    images[pagePosition],
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -38,7 +38,7 @@ class SlideShow extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for (int i = 0; i < images[0].length; i++)
+                  for (int i = 0; i < images.length; i++)
                     if (i == pagePosition) ...[
                       const CircularIndecator(isActive: true)
                     ] else

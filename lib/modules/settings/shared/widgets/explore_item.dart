@@ -1,16 +1,24 @@
 
+import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
+import 'package:bookya/modules/home/HomeCubit/home_state.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../styles/icon_broken.dart';
 
 class ExploreItem extends StatelessWidget {
-  const ExploreItem({Key? key}) : super(key: key);
+  int ?index;
+   ExploreItem({Key? key,required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    return BlocConsumer<HomeCubit, HomeState>(
+  listener: (context, state) {
+    // TODO: implement listener
+  },
+  builder: (context, state) {
     return InkWell(
       onTap: (){},
       child: Stack(
@@ -18,7 +26,7 @@ class ExploreItem extends StatelessWidget {
         children: [
           Column(
             children: [
-              const ClipRRect(
+               ClipRRect(
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(15.0,),
                   topLeft: Radius.circular(15.0,),
@@ -27,8 +35,8 @@ class ExploreItem extends StatelessWidget {
                   height: 200,
                   width: double.infinity,
                   fit: BoxFit.fill,
-                  image: AssetImage(
-                    'assets/images/pools-water.png',),
+                  image: NetworkImage(
+                      'http://api.mahmoudtaha.com/images/${HomeCubit.get(context).homeModel!.data!.data![index!].hotelImages![0].image}')
                 ),
               ),
               Container(
@@ -45,15 +53,17 @@ class ExploreItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            'Grand Royal Hotel',
-                            style: Theme.of(context).textTheme.headline5!.copyWith(
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: Text(
+                              '${HomeCubit.get(context).homeModel!.data!.data![index!].name}'.split('-').first,
+                              style: Theme.of(context).textTheme.headline6!.copyWith(
+                                fontWeight: FontWeight.bold,fontSize: 20
+                              ),
+                              maxLines: 1,overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const Spacer(),
                           Text(
-                            '\$150',
+                            'EGP ${HomeCubit.get(context).homeModel!.data!.data![index!].price}',
                             style: Theme.of(context).textTheme.headline5!.copyWith(
                               fontWeight: FontWeight.bold,
                             ),
@@ -66,22 +76,24 @@ class ExploreItem extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text(
-                            'Wembley, London',
-                            style: Theme.of(context).textTheme.caption,
+                          Expanded(
+                            child: Text(
+                              '${HomeCubit.get(context).homeModel!.data!.data![index!].address}',
+                              style: Theme.of(context).textTheme.caption,maxLines: 1,overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                           const SizedBox(
                             width: 2,
                           ),
-                          Icon(
-                            Icons.location_on,
-                            color: defaultColor,
-                          ),
-                          Text(
-                            '2 Km to...',
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                          const Spacer(),
+                          // Icon(
+                          //   Icons.location_on,
+                          //   color: defaultColor,
+                          // ),
+                          // Text(
+                          //   '2 Km to...',
+                          //   style: Theme.of(context).textTheme.caption,
+                          // ),
+                          // const Spacer(),
                           Text(
                             '/per night',
                             style: Theme.of(context).textTheme.caption,
@@ -101,7 +113,7 @@ class ExploreItem extends StatelessWidget {
             ),
             child: CircleAvatar(
               backgroundColor: DarkModeBloc.get(context).isDark ? HexColor('#1a1a1a') : Colors.white,
-              radius: 25.0,
+              radius: 20.0,
               child: IconButton(
                   onPressed: (){},
                   icon: Icon(
@@ -114,5 +126,7 @@ class ExploreItem extends StatelessWidget {
         ],
       ),
     );
+  },
+);
   }
 }

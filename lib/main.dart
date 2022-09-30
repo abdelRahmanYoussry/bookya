@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bookya/modules/boarding_pages/presentation/pages/boarding_screen.dart';
 import 'package:bookya/modules/bookingStatus/bloc/cubit.dart';
 import 'package:bookya/modules/bookingStatus/data/network/helper/dio_helper.dart';
+import 'package:bookya/modules/filtter/FilterCubit/filter_cubit.dart';
 import 'package:bookya/modules/home/HomeCubit/BlocObserver.dart';
 import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/home/presentation/Pages/Tabs_screen.dart';
@@ -16,6 +17,8 @@ import 'package:bookya/shared/shared_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'modules/home/Data/HomeEndPoints.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,10 +27,11 @@ void main() async {
   await CacheHelper.init();
   FinalDioHelper.init();
   bool? isDark = CacheHelper.getData(key: 'isDark');
-  debugPrint(isDark.toString());
+  debugPrint('${isDark} isDark');
   Widget? widget;
-  String? token = SharedPref.getToken();
-  if(token == null){
+   token = SharedPref.getToken()!;
+   debugPrint(token);
+  if(token ==''){
     widget = const BoardingScreen();
   }else{
     widget = const AllTabsScreen();
@@ -49,6 +53,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => HomeCubit()..getHotels()),
         BlocProvider(create: (context) => RegisterBloc()),
         BlocProvider(create: (context) => SettingsBloc()),
+        BlocProvider(create: (context) => FilterCubit()..getFacilities()),
         BlocProvider(
             create: (context) => MyBookingCubit()
               ..getBookingDataOngoing()
@@ -67,7 +72,7 @@ class MyApp extends StatelessWidget {
             themeMode: DarkModeBloc
                 .get(context)
                 .isDark ? ThemeMode.dark : ThemeMode.light,
-            home: startScreen,
+            home: BoardingScreen(),
           );
         },
       ),

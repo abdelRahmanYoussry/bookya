@@ -4,16 +4,17 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class Rating extends StatelessWidget {
   final double rate;
   final double iconSize;
-  const Rating({Key? key, required this.rate, this.iconSize = 20})
+   Color ?color=Colors.amber;
+   Rating({Key? key, required this.rate, this.iconSize = 20,this.color})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return RatingBarIndicator(
       rating: rate,
-      itemBuilder: (context, index) => const Icon(
+      itemBuilder: (context, index) =>  Icon(
         Icons.star,
-        color: Colors.amber,
+        color:color!,
       ),
       itemCount: 5,
       itemSize: iconSize,

@@ -221,7 +221,7 @@ BehaviorSubject <bool > rxSelected = BehaviorSubject();
   ImageProvider getImage() {
 
    if(!rxSelected.hasValue || !rxSelected.value){
-    if (photo == null) {
+    if (photo == null||photo!.isEmpty) {
       return const AssetImage(
         'assets/images/user (2).png',);
     } else {

@@ -27,7 +27,7 @@ class SharedPref {
     await _sharedPreferences!.setInt(userIdKey, ID);
   }
 
-  static getUserId()async{
+  static int? getUserId(){
     return _sharedPreferences!.getInt(userIdKey);
   }
 

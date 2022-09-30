@@ -30,10 +30,17 @@ class HotelsBloc extends Cubit<HotelsState>{
                       LatLng(latitude,longitude).hashCode.toString()),
                   position: LatLng(latitude,longitude),
                   icon: BitmapDescriptor.defaultMarker,
+                  visible: true,
                   onTap: ()async{
-                   await MapsLauncher.launchCoordinates(latitude,longitude);
+                   // await MapsLauncher.launchCoordinates(latitude,longitude);
                   },
-                  infoWindow: InfoWindow(title: "'\$' ${data[i].price} ",),
+                  infoWindow: InfoWindow(
+                    onTap: ()async{
+                      await MapsLauncher.launchCoordinates(latitude,longitude);
+                    },
+                      title: "'EGP' ${data[i].price} ",
+                  snippet: '${data[i].name}'
+                  ),
               ));
             }
           }

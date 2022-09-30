@@ -1,0 +1,109 @@
+{
+  "status": {
+    "type": "1"
+  },
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 18,
+        "name": "Palm Inn Hotel",
+        "description": "Palm Inn Hotel features a restaurant, outdoor swimming pool, a shared lounge and garden in Hurghada. Featuring family rooms, this property also provides guests with a terrace. The accommodation provides a 24-hour front desk, room service and currency exchange for guests.\n\nGuest rooms at the hotel are equipped with a seating area. Rooms are complete with a private bathroom equipped with a bath, all units at Palm Inn Hotel have a flat-screen TV and air conditioning, and selected rooms have a balcony. At the accommodation every room is equipped with bed linen and towels.\n\nA continental breakfast is available daily at Palm Inn Hotel.\n\nGuests at the hotel will be able to enjoy activities in and around Hurghada, like cycling.\n\nPopular points of interest near Palm Inn Hotel include Elysees Dream Beach, Qesm Hurghada Public Beach and El Sawaki Beach. The nearest airport is Hurghada International Airport, 13 km from the accommodation.\n\nCouples particularly like the location — they rated it 8.0 for a two-person trip.",
+        "price": "38",
+        "address": "El Dahar, Abdel-Moneim Riad Square, 84511 Hurghada, Egypt",
+        "longitude": "33.812999",
+        "latitude": "27.259102",
+        "rate": "8.00",
+        "created_at": "2022-09-28T10:53:41.000000Z",
+        "updated_at": "2022-09-28T10:53:41.000000Z",
+        "hotel_images": [
+          {
+            "id": 16,
+            "hotel_id": "18",
+            "image": "33391664362421.jpeg",
+            "created_at": null,
+            "updated_at": null
+          },
+          {
+            "id": 17,
+            "hotel_id": "18",
+            "image": "87741664362421.jpeg",
+            "created_at": null,
+            "updated_at": null
+          },
+          {
+            "id": 18,
+            "hotel_id": "18",
+            "image": "24311664362421.jpeg",
+            "created_at": null,
+            "updated_at": null
+          },
+          {
+            "id": 19,
+            "hotel_id": "18",
+            "image": "13321664362421.jpeg",
+            "created_at": null,
+            "updated_at": null
+          },
+          {
+            "id": 20,
+            "hotel_id": "18",
+            "image": "68051664362421.jpeg",
+            "created_at": null,
+            "updated_at": null
+          }
+        ],
+        "facilities": [
+          {
+            "id": 5,
+            "name": "A/C",
+            "image": "8801664361358.png",
+            "created_at": "2022-09-28T10:35:58.000000Z",
+            "updated_at": "2022-09-28T10:35:58.000000Z"
+          },
+          {
+            "id": 6,
+            "name": "Wifi",
+            "image": "74901664361371.png",
+            "created_at": "2022-09-28T10:36:11.000000Z",
+            "updated_at": "2022-09-28T10:36:11.000000Z"
+          },
+          {
+            "id": 7,
+            "name": "Garden",
+            "image": "75771664361381.png",
+            "created_at": "2022-09-28T10:36:21.000000Z",
+            "updated_at": "2022-09-28T10:36:21.000000Z"
+          }
+        ]
+      }
+    ],
+    "first_page_url": "http://api.mahmoudtaha.com/api/search-hotels?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "http://api.mahmoudtaha.com/api/search-hotels?page=1",
+    "links": [
+      {
+        "url": null,
+        "label": "&laquo; Previous",
+        "active": false
+      },
+      {
+        "url": "http://api.mahmoudtaha.com/api/search-hotels?page=1",
+        "label": "1",
+        "active": true
+      },
+      {
+        "url": null,
+        "label": "Next &raquo;",
+        "active": false
+      }
+    ],
+    "next_page_url": null,
+    "path": "http://api.mahmoudtaha.com/api/search-hotels",
+    "per_page": 15,
+    "prev_page_url": null,
+    "to": 1,
+    "total": 1
+  }
+}

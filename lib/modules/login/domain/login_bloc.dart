@@ -17,6 +17,7 @@ class LoginBloc extends Cubit<LoginState>{
       await SharedPref.saveEmail(result.data!.email!);
       await SharedPref.saveImage(result.data!.image!);
       await SharedPref.saveName(result.data!.name!);
+      await SharedPref.saveUserId(result.data!.id!); //new
       emit(SuccessLoginState());
     }
   }

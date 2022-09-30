@@ -5,22 +5,28 @@ import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:flutter/material.dart';
 
 class ExploreHomeScreen extends StatelessWidget {
-  const ExploreHomeScreen({Key? key}) : super(key: key);
+  bool isLiked=false;
+   ExploreHomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Explore',
+          'Bookya',
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              IconBroken.Heart,
-            ),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     isLiked=true;
+          //   },
+          //   icon: isLiked? Icon(
+          //     IconBroken.Heart,
+          //   ):
+          //   Icon(
+          //     Icons.favorite
+          //   ),
+          // ),
           IconButton(
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(builder: (c){
@@ -28,7 +34,7 @@ class ExploreHomeScreen extends StatelessWidget {
               }));
             },
             icon: const Icon(
-              Icons.map,
+              Icons.map,size: 30,
             ),
           ),
         ],

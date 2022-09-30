@@ -1,3 +1,5 @@
+import 'package:bookya/modules/home/Data/HomeEndPoints.dart';
+import 'package:bookya/modules/login/presentation/login_screen.dart';
 import 'package:bookya/modules/settings/modules/edit_account_page/presentation/page/edit_account_page.dart';
 import 'package:bookya/modules/settings/modules/settings_option_page/page/settings_option_page.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
@@ -6,6 +8,7 @@ import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
 import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/settings_item.dart';
+import 'package:bookya/shared/componets.dart';
 import 'package:bookya/shared/network/url_api.dart';
 import 'package:bookya/shared/shared_pref.dart';
 import 'package:flutter/cupertino.dart';
@@ -196,184 +199,182 @@ class SettingsWidget extends StatelessWidget {
                     function: () {
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.drag_handle,
-                                size: 28,
-                                color: Colors.grey,
-                              ),
-                              const SizedBox(
-                                height: 30.0,
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    IconBroken.Call,
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    'Mostafa Gado',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    '0123456789',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
+                        builder: (context) => Container(
+                          color: cubit.isDark ? HexColor('#1a1a1a') : Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0,vertical: 10),
+                            child: Column(
+                              children: [
+                                const Icon(
+                                  Icons.drag_handle,
+                                  size: 28,
+                                  color: Colors.grey,
                                 ),
-                                child: MyDivider(),
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    IconBroken.Call,
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    'Mostafa Gado',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    '0123456789',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
+                                const SizedBox(
+                                  height: 30.0,
                                 ),
-                                child: MyDivider(),
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    IconBroken.Call,
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    'Mostafa Gado',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
+                                Row(
+                                  children: [
+                                    Icon(
+                                      IconBroken.Info_Circle,
+                                      color: defaultColor,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    '0123456789',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
+                                    const SizedBox(
+                                      width: 20.0,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
+                                    const Text(
+                                      'Abdelrahman Youssry',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    const Text(
+                                      '314',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                child: MyDivider(),
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    IconBroken.Call,
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.0,
                                   ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    'Mostafa Gado',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    '0123456789',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
+                                  child: MyDivider(),
                                 ),
-                                child: MyDivider(),
-                              ),
-                              Row(
-                                children: const [
-                                  Icon(
-                                    IconBroken.Call,
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    'Mostafa Gado',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
+                                Row(
+                                  children: [
+                                    Icon(
+                                      IconBroken.Info_Circle,
+                                      color: defaultColor,
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: 20.0,
-                                  ),
-                                  Text(
-                                    '0123456789',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 22,
+                                    const SizedBox(
+                                      width: 20.0,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: 10.0,
+                                    const Text(
+                                      'Mostafa Gado',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    const Text(
+                                      '318',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                child: MyDivider(),
-                              ),
-                            ],
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: MyDivider(),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      IconBroken.Info_Circle,
+                                      color: defaultColor,
+                                    ),
+                                    const SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    const Text(
+                                      'Seif Nagi',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    const Text(
+                                      '282',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: MyDivider(),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      IconBroken.Info_Circle,
+                                      color: defaultColor,
+                                    ),
+                                    const SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    const Text(
+                                      'Ziad Mohamed',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    const Text(
+                                      '295',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: MyDivider(),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      IconBroken.Info_Circle,
+                                      color: defaultColor,
+                                    ),
+                                    const SizedBox(
+                                      width: 20.0,
+                                    ),
+                                    const Text(
+                                      'Mahmoud Khaled',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    const Text(
+                                      '320',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.normal,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: 10.0,
+                                  ),
+                                  child: MyDivider(),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -388,7 +389,9 @@ class SettingsWidget extends StatelessWidget {
                     child: MyDivider(),
                   ),
                   SettingsItem(
-                    function: () {},
+                    function: () {
+                      navigateAndFinish(context, const LoginPage());
+                    },
                     text: 'Sign out',
                     icon: IconBroken.Logout,
                   ),
@@ -410,7 +413,7 @@ class SettingsWidget extends StatelessWidget {
 
   ImageProvider getImage() {
     String? image =  SharedPref.getImage();
-    if(image== null) {
+    if(image== null||image.isEmpty) {
       return const AssetImage('assets/images/user (2).png',);
     }
     else

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:readmore/readmore.dart';
 import '../widget/rating_stars.dart';
 import '../widget/rich_text.dart';
 import '../widget/slideshow_images.dart';
@@ -10,7 +10,7 @@ class DetailsHotelScreen extends StatelessWidget {
   final String price;
   final double rate;
   final List image;
-
+  final String address;
   const DetailsHotelScreen({
     Key? key,
     required this.hotelName,
@@ -18,24 +18,13 @@ class DetailsHotelScreen extends StatelessWidget {
     required this.price,
     required this.rate,
     required this.image,
+    required this.address,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    List<dynamic> images = [
-      [
-        'https://image.makewebeasy.net/makeweb/0/GYWrZvZVh/ADVICE/%E0%B8%94%E0%B8%B2%E0%B8%A7%E0%B8%99%E0%B9%8C%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94_2_.jpg',
-      ]
-    ];
-
-    bool isNoImages = false;
-    if (image[0] == 'No data to show') {
-      isNoImages = true;
-    } else {
-      isNoImages == false;
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -54,18 +43,31 @@ class DetailsHotelScreen extends StatelessWidget {
           children: [
             SlideShow(
               height: height,
-              images: isNoImages == true ? images : image,
+              images: image,
               width: width,
             ),
-            Flexible(child: Text(description)),
+            Flexible(
+                child: ReadMoreText(
+              description,
+              colorClickableText: Colors.teal,
+              trimCollapsedText: 'Show more',
+              trimExpandedText: 'Show less',
+              style: const TextStyle(color: Colors.black),
+            )),
             SizedBox(
-              height: height / 25,
+              height: height / 60,
+            ),
+            Text(
+              'at $address',
+            ),
+            SizedBox(
+              height: height / 60,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 TextWithTwoColors(
-                    bigText: price + ' EGP', smallText: '/per Night'),
+                    bigText: price + ' \$', smallText: '/per Night'),
                 Rating(
                   rate: rate,
                 ),

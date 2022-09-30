@@ -1,4 +1,6 @@
+import 'package:bookya/modules/filtter/FilterCubit/filter_cubit.dart';
 import 'package:bookya/modules/filtter/pages/filtter_screen.dart';
+import 'package:bookya/modules/home/HomeCubit/home_cubit.dart';
 import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:bookya/modules/settings/shared/styles/colors.dart';
 import 'package:bookya/modules/settings/shared/styles/icon_broken.dart';
@@ -6,7 +8,7 @@ import 'package:bookya/modules/settings/shared/widgets/divider.dart';
 import 'package:bookya/modules/settings/shared/widgets/explore_item.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 
 class ExploreScreenWidget extends StatelessWidget {
   const ExploreScreenWidget({Key? key}) : super(key: key);
@@ -32,14 +34,16 @@ class ExploreScreenWidget extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        '20, Sep - 25, Sep',
+                        '29, Sep - 30, Sep',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ],
                   ),
                 ),
                 VerticalDivider(
-                  color: DarkModeBloc.get(context).isDark ? Colors.white :HexColor('#1a1a1a') ,
+                  color: DarkModeBloc.get(context).isDark
+                      ? Colors.white
+                      : HexColor('#1a1a1a'),
                   thickness: 2,
                 ),
                 Expanded(
@@ -78,28 +82,36 @@ class ExploreScreenWidget extends StatelessWidget {
           Row(
             children: [
               Text(
-                '530 Hotels found',
+                '7 Hotels found',
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontWeight:DarkModeBloc.get(context).isDark ? FontWeight.w400: FontWeight.w600,
+                      fontWeight: DarkModeBloc.get(context).isDark
+                          ? FontWeight.w400
+                          : FontWeight.w600,
                     ),
               ),
               const Spacer(),
               Text(
                 'Filter',
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                      fontWeight: DarkModeBloc.get(context).isDark ? FontWeight.w400: FontWeight.w600,
+                      fontWeight: DarkModeBloc.get(context).isDark
+                          ? FontWeight.w400
+                          : FontWeight.w600,
                     ),
               ),
               IconButton(
-                  onPressed: () {
-
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const FilterScreen(),),);
-
+                  onPressed: ()async {
+                   await FilterCubit.get(context).getFacilities();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FilterScreen(),
+                      ),
+                    );
                   },
                   icon: Icon(
                     IconBroken.Filter_2,
                     color: defaultColor,
-
+                    size: 30,
                   ))
             ],
           ),
@@ -107,16 +119,25 @@ class ExploreScreenWidget extends StatelessWidget {
             height: 20.0,
           ),
           Expanded(
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-                itemBuilder: (context, index) => const ExploreItem(),
+            child: ConditionalBuilder(
+              condition: HomeCubit.get(context).homeModel != null,
+              fallback: (context) => Center(
+                child: CircularProgressIndicator(
+                  color: defaultColor,
+                ),
+              ),
+              builder: (context) => ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) => ExploreItem(
+                  index: index,
+                ),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 30.0,
                 ),
-                itemCount: 4,
+                itemCount:HomeCubit.get(context).homeModel!.data!.data!.length,
+              ),
             ),
           ),
-
         ],
       ),
     );

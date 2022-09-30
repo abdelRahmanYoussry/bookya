@@ -24,6 +24,7 @@ class BoardingWidget extends StatelessWidget {
               ),
               Expanded(
                 child: PageView(
+                  physics: const BouncingScrollPhysics(),
                   children: [
                     Center(
                       child: Column(
@@ -31,9 +32,11 @@ class BoardingWidget extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Image.asset('assets/part1.png'),
+                          Image.asset('assets/images/boarding 3.png',
+                          height: 350,
+                          ),
                           const SizedBox(
-                            height: 50,
+                            height: 20,
                           ),
                           Center(
                             child: Text(
@@ -42,7 +45,7 @@ class BoardingWidget extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Center(
                             child: Text(
@@ -51,7 +54,7 @@ class BoardingWidget extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 60.0,
+                            height: 30.0,
                           ),
                           DotsIndicator(
                             dotsCount: 3,
@@ -73,9 +76,11 @@ class BoardingWidget extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Image.asset('assets/part2.png'),
+                          Image.asset('assets/images/boarding 2.png',
+                          height: 365,
+                          ),
                           const SizedBox(
-                            height: 50,
+                            height: 10,
                           ),
                           Center(
                             child: Text(
@@ -93,7 +98,7 @@ class BoardingWidget extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 60.0,
+                            height: 20.0,
                           ),
                           DotsIndicator(
                             dotsCount: 3,
@@ -115,9 +120,11 @@ class BoardingWidget extends StatelessWidget {
                           const SizedBox(
                             height: 15,
                           ),
-                          Image.asset('assets/part3.png'),
+                          Image.asset('assets/images/boarding1.png',
+                          height: 365,
+                          ),
                           const SizedBox(
-                            height: 130,
+                            height: 10,
                           ),
                           Center(
                             child: Text(
@@ -135,7 +142,7 @@ class BoardingWidget extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 60.0,
+                            height: 10.0,
                           ),
                           DotsIndicator(
                             dotsCount: 3,
@@ -167,7 +174,7 @@ class BoardingWidget extends StatelessWidget {
                 borderRadius: 15,
               ),
               const SizedBox(
-                height: 10.0,
+                height: 20.0,
               ),
               MyButton(
                 text: "Create Account",

@@ -19,7 +19,7 @@ class FirstWidget extends StatelessWidget {
     return Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/back.jpg"),
+                image: AssetImage("assets/images/bookya5.png"),
                 fit: BoxFit.cover,
               )
           ),
@@ -35,18 +35,18 @@ class FirstWidget extends StatelessWidget {
                     Text(
                       "Bookya",
                       style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        color: Colors.white,
+                        color: Colors.teal,
                       ),
                     ),
                     const SizedBox(height: 5,),
                     Text(
-                      "Best hotel deals for your holiday",
+                      "Best hotels deals for your holiday",
                       style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                        color: Colors.white,
+                        color: Colors.teal,
                         fontSize: 20.0,
                       ),
                     ),
-                    const SizedBox(height: 400,),
+                    const SizedBox(height: 450,),
                     MyButton(text: "Get Started", height: 50.0, width: 300.0, onPress: (){
                           Navigator.push(
                           context,

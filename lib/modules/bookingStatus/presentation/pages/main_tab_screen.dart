@@ -8,7 +8,6 @@ import '../../bloc/cubit.dart';
 import '../../bloc/states.dart';
 import '../pages/ongoing_screen.dart';
 
-
 class TabScreen extends StatelessWidget {
   const TabScreen({
     Key? key,
@@ -66,33 +65,42 @@ class TabScreen extends StatelessWidget {
                   TabBarView(
                     children: [
                       ConditionalBuilder(
-                        condition: state is! MyBookingOngoingLoadingState,
+                        condition:
+                            MyBookingCubit.get(context).bookingOngoingModel !=
+                                null,
                         builder: (context) => UpComingScreen(
                             dataToShow: ongoingBooking,
                             dataLength: ongoingLength),
-                        fallback: (BuildContext context) => const Center(
-                          child: CircularProgressIndicator(),
+                        fallback: (BuildContext context) => Center(
+                          child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColor),
                         ),
                       ),
                       ConditionalBuilder(
-                        condition: state is! MyBookingCompletedLoadingState,
+                        condition:
+                            MyBookingCubit.get(context).bookingCompletedModel !=
+                                null,
                         builder: (context) => ListOfBookings(
                             modelData: compeletdBooking,
                             dataLength: completedLength,
                             screenName: 'completed'),
-                        fallback: (BuildContext context) => const Center(
-                          child: CircularProgressIndicator(),
+                        fallback: (BuildContext context) => Center(
+                          child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColor),
                         ),
                       ),
                       ConditionalBuilder(
-                        condition: state is! MyBookingCancelledLoadingState,
+                        condition:
+                            MyBookingCubit.get(context).bookingCancelledModel !=
+                                null,
                         builder: (context) => ListOfBookings(
                           modelData: cancelledBooking,
                           dataLength: cancelledLength,
                           screenName: 'cancelled',
                         ),
-                        fallback: (BuildContext context) => const Center(
-                          child: CircularProgressIndicator(),
+                        fallback: (BuildContext context) => Center(
+                          child: CircularProgressIndicator(
+                              color: Theme.of(context).primaryColor),
                         ),
                       ),
                     ],

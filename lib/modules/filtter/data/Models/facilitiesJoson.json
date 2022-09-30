@@ -1,0 +1,42 @@
+{
+  "status": {
+    "type": "1"
+  },
+  "data": [
+    {
+      "id": 1,
+      "name": "facilit5",
+      "image": "http://api.mahmoudtaha.com/images/37371662897079.jpg",
+      "created_at": "2022-09-11T11:51:19.000000Z",
+      "updated_at": "2022-09-11T11:51:19.000000Z"
+    },
+    {
+      "id": 2,
+      "name": "Wifi",
+      "image": "http://api.mahmoudtaha.com/images/71711662902782.jpeg",
+      "created_at": "2022-09-11T13:26:22.000000Z",
+      "updated_at": "2022-09-11T13:26:22.000000Z"
+    },
+    {
+      "id": 3,
+      "name": "Wifi",
+      "image": "http://api.mahmoudtaha.com/images/50631662902867.png",
+      "created_at": "2022-09-11T13:27:47.000000Z",
+      "updated_at": "2022-09-11T13:27:47.000000Z"
+    },
+    {
+      "id": 4,
+      "name": "A/C",
+      "image": "http://api.mahmoudtaha.com/images/83631662902917.png",
+      "created_at": "2022-09-11T13:28:37.000000Z",
+      "updated_at": "2022-09-11T13:28:37.000000Z"
+    }
+  ]
+
+
+
+
+
+}
+
+

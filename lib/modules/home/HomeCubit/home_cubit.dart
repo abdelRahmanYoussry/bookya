@@ -13,6 +13,8 @@ class HomeCubit extends Cubit<HomeState> {
   static HomeCubit get(context)=>BlocProvider.of(context);
   int currentIndex = 0;
   int indicatorIndex = 0;
+  int hotelIndicatorIndex = 0;
+  bool searchImage=false;
   HomeModel ?homeModel;
 
   void changeNavBar(int index)
@@ -36,6 +38,12 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ChangeIndicator());
   }
 
+
+  void changeHotelIndicatorIndex(int index,dynamic reson)
+  {
+    hotelIndicatorIndex = index;
+    emit(ChangeIndicator());
+  }
 
   void getHotels(){
     emit(LoadingGetHotel());

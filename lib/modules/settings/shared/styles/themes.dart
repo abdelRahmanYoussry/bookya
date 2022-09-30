@@ -19,6 +19,11 @@ ThemeData darkTheme = ThemeData(
     ),
     backgroundColor: HexColor('#1a1a1a'),
     elevation: 0.0,
+    toolbarTextStyle:const TextStyle(
+      color: Colors.white,
+      fontSize: 24.0,
+      fontWeight: FontWeight.bold,
+    ) ,
     titleTextStyle: const TextStyle(
       color: Colors.white,
       fontSize: 24.0,
@@ -44,6 +49,11 @@ ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w400,
       color: Colors.white,
     ),
+    headline6: const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+    ),
     subtitle1: const TextStyle(
       color: Colors.white,
       fontSize: 22,
@@ -55,6 +65,7 @@ ThemeData darkTheme = ThemeData(
     ),
   ),
   primarySwatch: defaultColor,
+
 );
 
 ThemeData lightTheme = ThemeData(
@@ -64,7 +75,6 @@ ThemeData lightTheme = ThemeData(
     iconTheme: IconThemeData(
       color: Colors.black,
     ),
-    backwardsCompatibility: false,
     systemOverlayStyle: SystemUiOverlayStyle(
       statusBarColor: Colors.black,
       systemNavigationBarIconBrightness: Brightness.dark,
@@ -77,9 +87,22 @@ ThemeData lightTheme = ThemeData(
       fontSize: 24.0,
       fontWeight: FontWeight.bold,
     ),
+    toolbarTextStyle:TextStyle(
+      color: Colors.black,
+      fontSize: 24.0,
+      fontWeight: FontWeight.bold,
+    )
   ),
   primarySwatch: defaultColor,
+  primaryTextTheme: TextTheme(
+    headline6: const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
+      color: Colors.black,
+    ),
+  ),
   textTheme: TextTheme(
+
     bodyText1: const TextStyle(
       fontWeight: FontWeight.w600,
       fontSize: 18.0,
@@ -100,8 +123,14 @@ ThemeData lightTheme = ThemeData(
       fontSize: 22,
       fontWeight: FontWeight.bold,
     ),
-    caption: const TextStyle(
-      fontSize: 18.0,
+    headline6: const TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
+      color: Colors.black,
     ),
+    caption: const TextStyle(
+      fontSize: 18.0,color: Colors.black
+    ),
+
   ),
 );

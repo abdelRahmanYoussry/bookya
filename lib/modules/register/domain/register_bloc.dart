@@ -11,7 +11,8 @@ class RegisterBloc extends Cubit<RegisterState>{
     emit(LoadingRegisterState());
   dynamic result = await registerApi.registerUser(model);
   if(result is String ){
-    emit(ErrorRegisterState(result));
+    emit(ErrorRegisterState(result.toString()));
+    print(result.toString());
   }else if (result is RegisterResponseModel){
     await SharedPref.saveToken(result.data!.apiToken!);
     await SharedPref.saveEmail(result.data!.email!);

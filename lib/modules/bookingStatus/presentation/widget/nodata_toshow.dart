@@ -1,3 +1,4 @@
+import 'package:bookya/modules/settings/shared/cubit/dark_mode_cubit.dart';
 import 'package:flutter/material.dart';
 
 class NoDataToShow extends StatelessWidget {
@@ -30,6 +31,9 @@ class NoDataToShow extends StatelessWidget {
           Text(
             quoteBelowImage,
             textAlign: TextAlign.center,
+            style: TextStyle(
+              color: DarkModeBloc.get(context).isDark?Colors.white:Colors.black
+            ),
           )
         ],
       ),

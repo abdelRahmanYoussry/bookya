@@ -10,28 +10,51 @@ class MyTextFormField extends StatelessWidget {
   Function? onSubmit;
   Function? onChanged;
   Function()? onTap;
-  late  bool isPassword = false;
+  late bool isPassword = false;
   String? label;
   String? hint;
   Widget? prefix;
-  Color ?borderColor ;
+  Color? borderColor;
+
   Color? labelColor;
-  Color? textColor ;
-  Color ?backgroundColor;
-  Color ?prefixIconColor ;
-  Color ?suffixIconColor ;
+  Color? textColor;
+
+  Color? backgroundColor;
+  Color? prefixIconColor;
+
+  Color? suffixIconColor;
+
   IconData? suffix;
   Function()? suffixClicked;
   TextStyle? hintStyle;
 
   String? textInputFormat;
 
-  MyTextFormField({Key? key,required this.readOnly, required this.control,
-    this.hint, required this.type,this.validator,this.onSubmit,this.onChanged,this.onTap
-    ,required this.isPassword, this.label,  this.prefix,this.suffix,this.suffixClicked,required this.borderColor,
-    required this.labelColor,required this.textColor,required this.backgroundColor,
-    this.prefixIconColor,this.textInputFormat,this.suffixIconColor,this.hintStyle
-  }) : super(key: key);
+  MyTextFormField(
+      {Key? key,
+      required this.readOnly,
+      required this.control,
+      this.hint,
+      required this.type,
+      this.validator,
+      this.onSubmit,
+      this.onChanged,
+      this.onTap,
+      required this.isPassword,
+      this.label,
+      this.prefix,
+      this.suffix,
+      this.suffixClicked,
+      required this.borderColor,
+      required this.labelColor,
+      required this.textColor,
+      required this.backgroundColor,
+      this.prefixIconColor,
+      this.textInputFormat,
+      this.suffixIconColor,
+      this.hintStyle})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -59,24 +82,28 @@ class MyTextFormField extends StatelessWidget {
         fillColor: backgroundColor!,
         filled: true,
         labelText: label,
-        hintText:hint ,
+        hintText: hint,
         labelStyle: TextStyle(color: labelColor, fontSize: 14),
         hintStyle: hintStyle,
         prefixIcon: prefix,
-        prefixIconColor:prefixIconColor ,
+        prefixIconColor: prefixIconColor,
         suffixIcon: suffix != null
             ? IconButton(
-          onPressed: () {
-            suffixClicked!();
-          },
-          icon: Icon(suffix,color:suffixIconColor ,),
-        )
+                onPressed: () {
+                  suffixClicked!();
+                },
+                icon: Icon(
+                  suffix,
+                  color: suffixIconColor,
+                ),
+              )
             : null,
         enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Theme.of(context).textTheme.subtitle1!.color!, width: 3),
+            borderSide: BorderSide(
+                color: borderColor!, width: 3),
             borderRadius: BorderRadius.circular(20)),
         focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color:borderColor!, width: 3),
+            borderSide: BorderSide(color: borderColor!, width: 3),
             borderRadius: BorderRadius.circular(20)),
         focusedErrorBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.red, width: 4),

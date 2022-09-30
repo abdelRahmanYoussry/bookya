@@ -2,7 +2,7 @@ import 'package:bookya/shared/shared_pref.dart';
 import 'package:dio/dio.dart';
 import '../endpoints.dart';
 
-class FinalDioHelper{
+class FinalDioHelper {
   static late Dio dio;
   static init() {
     dio = Dio(
@@ -15,12 +15,10 @@ class FinalDioHelper{
 
   static Future<Response> getData({
     required String url,
-    String token =
-    'DnkaEA2eU1DNZmKIpx5I7u6ptaKeEGAA1nq4bFkClgBsYsWLyTMNsJD7O06u',
     required Map<String, dynamic> query,
   }) async {
     dio.options = BaseOptions(headers: {
-      'token': token,
+      'token': SharedPref.getToken(),
     });
     return await dio.get(baseUrl + url, queryParameters: query);
   }
