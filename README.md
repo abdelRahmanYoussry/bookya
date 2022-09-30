@@ -34,6 +34,9 @@ The main packages used in the project:
    syncfusion_flutter_sliders: ^20.2.50
    flutter_switch: ^0.3.2
 ```
+### Application description
+
+The app authenticate the user data redirecting him to the login in screen after registering to browse the hotels, The user can change the theme color chosing between light and dark theme not only the theme mode but also toggling between set of colors to choose the preferable color. The hotels is displayed in the map if the user needs to check the hotel location. Also a list of facilities is diplayed for the user to filter for the best hotel chooice. 
 
 
 ### Table of Contents
