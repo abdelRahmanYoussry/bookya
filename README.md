@@ -42,11 +42,8 @@ The main packages used in the project:
 	* [Dart](#configuration-dart)
 	* [iOS](#configuration-ios)
 	* [Android](#configuration-android)
-	* [Firebase](#configuration-firebase)
 3. [Project structure](#structure)
-4. [Disabled features](#disabled-features)
-	* [Google Pay](#disabled-features-googlepay)
-	* [FB login](#disabled-features-fb)
+
 
 ## How to build & run <a name="build&run"></a>
 
