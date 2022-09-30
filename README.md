@@ -109,7 +109,6 @@ iOS uses `*.xcconfig` files, they are located in the folder: `ios/Flutter`
 `*.xcconfig` files are used depending on the `scheme` selected inside the iOS project.
 
 
-<img src="docs/image/flavor_ios.png" alt="flavor_ios" style="zoom: 67%;" />
 
 When building a project from flutter, the `flavor` flag matches the `schema` within the iOS project.
 
@@ -128,14 +127,11 @@ APPLE_PAY_MERCHANT_ID       = ""
 
 We should also mention the signature of iOS applications. Assembly signature parameters are specified on the native side, and it is possible for each individual `scheme` to specify its own signature option.
 
-<img src="docs/image/signing_ios.png" alt="signing_ios" style="zoom:67%;" />
-
 
 ### Android <a name="configuration-android"></a>
 
 Android uses `productFlavors`, they are in the folder: `android/app/build.gradle`
 
-<img src="docs/image/flavor_android.png" alt="flavor_android" style="zoom:67%;" />
 
 
 For Android, the minimum set of parameters:
