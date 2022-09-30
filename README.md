@@ -147,7 +147,7 @@ resValue "string", "gms_api_key", ""
 
 ## Project structure <a name="structure"></a>
 
-<img src="docs/image/folders.png" alt="folders" style="zoom:67%;" />
+<img src="https://drive.google.com/file/d/1C3nu0Lr4L7jr1eSY8bgQ_fZSvam5TeAs/view?usp=sharing" alt="folders" style="zoom:67%;" />
 
 
 |   |   |
