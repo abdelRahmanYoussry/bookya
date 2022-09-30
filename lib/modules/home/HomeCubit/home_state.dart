@@ -10,6 +10,7 @@ class ChangeIndicator extends HomeState{}
 class AppChangeColorState extends HomeState{}
 class LoadingGetHotel extends HomeState{}
 class SuccessGetHotel extends HomeState{}
+class ToggleIsEndState extends HomeState{}
 class ErrorGetHotel extends HomeState{
  final String error;
 

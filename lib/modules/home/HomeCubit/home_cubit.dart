@@ -45,6 +45,9 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ChangeIndicator());
   }
 
+  int lastPage = 1;
+  int total = 0;
+  int currentPage = 1;
   void getHotels(){
     emit(LoadingGetHotel());
     FinalDioHelper.getData(url: hotelUrl,
@@ -52,6 +55,14 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value) {
       // debugPrint(value!.data.toString());
       homeModel=HomeModel.fromJson(value.data);
+
+      currentIndex++;
+      debugPrint(lastPage.toString());
+      if(lastPage == 1){
+        lastPage = homeModel!.data!.lastPage!;
+        total = homeModel!.data!.total!;
+      }
+      isEnd = false;
       debugPrint(homeModel!.data!.data![0].hotelImages![0].image);
       emit(SuccessGetHotel());
     }).catchError((error){
@@ -93,4 +104,11 @@ class HomeCubit extends Cubit<HomeState> {
   //
   //   });
   // }
+
+  bool isEnd = false;
+  void toggleIsEnd(){
+    isEnd = !isEnd;
+    debugPrint(isEnd.toString());
+    emit(ToggleIsEndState());
+  }
 }
